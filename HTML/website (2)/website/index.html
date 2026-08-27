@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBSITE</title>
+    <link rel="stylesheet" href="banco.css">
+
+    <!-- IMPORTA LIBRERIA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+<body>
+    <!-- llamar a la clase -->
+    <button id="menu-toggle" class="menu-toggle">
+        <img onclick="pressMenu()" src="icons/icon-menu.svg" alt="">
+    </button>
+
+    <section id="content-point" class="content-point">
+        <div id="point-uno" class="point"></div>
+        <div id="point-dos" class="point"></div>
+        <div id="point-tres" class="point"></div>
+        <div id="point-cuatro" class="point"></div>
+    </section>
+
+    <menu id="menu" class="menu menu_visible">
+        <h1 class="logo-header">BBVA</h1>
+
+        <nav class="navegacion open-sans">
+
+            <li class="item-menu">INICIO</li>
+            <li class="item-menu">PRODUCTOS</li>
+            <li class="item-menu">MI BANCA</li>
+        </nav>
+    </menu>
+
+    <button class="flotante atras" onclick="moverAtras()">
+        < </button>
+
+            <button class="flotante adelante" onclick="moverAdelante()"> > </button>
+
+            <section id="banner" class="banner-slider">
+
+                <div class="slide">
+                    <img class="image" src="imagenes/slide_1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img class="image" src="imagenes/slide_2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img class="image" src="imagenes/slide_3.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img class="image" src="imagenes/slide_4.jpg" alt="">
+                </div>
+
+            </section>
+
+            <!-- <section class="banner">
+
+        <article class="banner-info">
+            <h3 class="open-sans open-sans-drakblue">Pague créditos y tarjetas</h3>
+            <h1 class="open-sans open-sans-drakblue">La banca personal</h1>
+            <p class="open-sans">Descargue ya nuestra app y maneje todas sus finanzas desde un solo lugar. Disfrute de
+                un acceso rápido y seguro, con un canal que está disponible para usted las 24/7.</p>
+            <button class="open-sans open-sans-drakblue banner-button">Solicita
+                información</button>
+        </article>
+        <article class="banner-image"></article>
+    </section> -->
+
+            <h1 class="open-sans open-sans-drakblue main-tittle">Nuestros productos</h1>
+
+            <section class="cartas open-sans">
+                <div class="card">
+                    <img src="imagenes/credit-card.jpg" alt="" class="imagen-card">
+                    <div class="detalle">Lorem, ipsum dolor sit amet consectetur adipisicing </div>
+                    <button class="ver-mas">VER MAS</button>
+                </div>
+                <div class="card">
+                    <img src="imagenes/bank.png" alt="" class="imagen-card">
+                    <div class="detalle">Lorem, ipsum dolor sit amet consectetur adipisicing </div>
+                    <button class="ver-mas">VER MAS</button>
+                </div>
+                <div class="card">
+                    <img src="imagenes/balckCard.jpg" alt="" class="imagen-card">
+                    <div class="detalle">Lorem, ipsum dolor sit amet consectetur adipisicing </div>
+                    <button class="ver-mas">VER MAS</button>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="fot-1">
+                    <h1 class="logo-footer open-sans">BBVA</h1>
+                </div>
+                <div class="fot-2 open-sans">
+                    <h4>informacion@bbva.com.co</h4>
+                    <h4>Tel: 304 3556677</h4>
+                    <h4>Whatsapp: 318 4567788</h4>
+                </div>
+                <div class="fot-3 open-sans">
+                    <h4>informacion@bbva.com.co</h4>
+                    <h4>Tel: 304 3556677</h4>
+                    <h4>Whatsapp: 318 4567788</h4>
+                </div>
+                <div class="fot-4">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+
+                </div>
+
+
+            </footer>
+
+
+            <script>
+
+                const contentPoint = document.getElementById("content-point");
+                const pointUno = document.getElementById("point-uno");
+                const pointDos = document.getElementById("point-dos");
+                const pointTres = document.getElementById("point-tres");
+                const pointCuatro = document.getElementById("point-cuatro");
+
+                function pressMenu() {
+
+                    const menu = document.getElementById("menu");
+                    menu.classList.toggle("menu_visible");
+
+                    // menu.className = "ocultar-menu";
+                }
+
+                let posicion = 0;
+                let totalSlides = 4;
+
+                function inicarSlide() {
+                    let posicion = 0;
+                    let totalSlides = 4;
+                    let duracion = 3000;
+
+                    function avanzar() {
+                        const banner = document.getElementById("banner");
+                        posicion++;
+
+                        if (posicion >= totalSlides) {
+                            posicion = 0;
+                        }
+                        colorearPoint(posicion);
+                        banner.style.left = `-${posicion * 100}vw`;
+                        setTimeout(avanzar, duracion);
+
+                    }
+                    avanzar();
+                }
+
+                function moverAdelante() {
+                    const banner = document.getElementById("banner");
+                    posicion++;
+
+                    if (posicion <= totalSlides - 1) {
+                        banner.style.left = `-${posicion * 100}vw`;
+                    } else {
+                        posicion = 0;
+                        banner.style.left = `-${posicion * 100}vw`;
+                    }
+                }
+
+                function moverAtras() {
+                    const banner = document.getElementById("banner");
+                    posicion--;
+
+                    if (posicion >= 0) {
+                        banner.style.left = `-${posicion * 100}vw`;
+                    } else {
+                        posicion = 3;
+                        banner.style.left = `-${posicion * 100}vw`;
+                    }
+                }
+
+                function colorearPoint(posicion) {
+                    switch (posicion) {
+                        case 0:
+                            pointUno.style.backgroundColor = "#FFF";
+                            pointDos.style.backgroundColor = "gray";
+                            pointTres.style.backgroundColor = "gray";
+                            pointCuatro.style.backgroundColor = "gray";
+                            break;
+                        case 1:
+                            pointUno.style.backgroundColor = "gray";
+                            pointDos.style.backgroundColor = "#FFF";
+                            pointTres.style.backgroundColor = "gray";
+                            pointCuatro.style.backgroundColor = "gray";
+                            break;
+                        case 2:
+                            pointUno.style.backgroundColor = "gray";
+                            pointDos.style.backgroundColor = "gray";
+                            pointTres.style.backgroundColor = "#FFF";
+                            pointCuatro.style.backgroundColor = "gray";
+                            break;
+                        case 3:
+                            pointUno.style.backgroundColor = "gray";
+                            pointDos.style.backgroundColor = "gray";
+                            pointTres.style.backgroundColor = "gray";
+                            pointCuatro.style.backgroundColor = "#FFF";
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+                inicarSlide();
+            </script>
+</body>
+
+</html>

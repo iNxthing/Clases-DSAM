@@ -1,0 +1,484 @@
+/* =========================================================
+   1. Reset y base general
+   Estos estilos evitan diferencias entre navegadores y definen
+   la apariencia inicial de toda la pagina.
+========================================================= */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0f172a;
+    background: #eef3ff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* =========================================================
+   2. Utilidades reutilizables
+   Clases pequenas que se repiten en varias secciones para
+   mantener coherencia visual sin duplicar demasiadas reglas.
+========================================================= */
+.container {
+    width: min(1180px, calc(100% - 28px));
+    margin: 34px auto 0;
+}
+
+.etiqueta {
+    margin: 0;
+    color: #0055ff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.btn-principal,
+.card button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 999px;
+    background: #001391;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* =========================================================
+   3. Header y navegacion
+   El header queda fijo cerca de la parte superior para que el
+   usuario siempre pueda volver a navegar. El menu cambia de
+   horizontal a desplegable desde las media queries.
+========================================================= */
+.site-header {
+    position: sticky;
+    top: 12px;
+    z-index: 20;
+    width: min(1180px, calc(100% - 28px));
+    min-height: 82px;
+    margin: 12px auto 0;
+    padding: 0 24px;
+    border-radius: 22px;
+    background: #001391;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 18px 40px rgba(0, 19, 145, 0.24);
+}
+
+.logo-header {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.08em;
+}
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-menu {
+    padding: 12px 16px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.item-menu:hover,
+.btn-menu {
+    background: #fff;
+    color: #001391;
+}
+
+/*
+   Boton hamburguesa:
+   en escritorio permanece oculto. En movil se muestra y JavaScript
+   agrega la clase .activo para convertir las lineas en una X.
+*/
+.menu-toggle {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.14);
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 5px auto;
+    border-radius: 99px;
+    background: #fff;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-toggle.activo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.activo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================================================
+   4. Hero y slider
+   El hero usa dos columnas: texto a la izquierda y banner a la
+   derecha. En pantallas chicas se apila para evitar que el texto
+   o la imagen queden comprimidos.
+========================================================= */
+.hero {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 34px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, #ffffff 0%, #dce6ff 100%);
+}
+
+.hero-texto h1 {
+    margin: 10px 0 16px;
+    font-size: clamp(2.1rem, 5vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+}
+
+.hero-texto p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+/*
+   Slider:
+   position: relative permite colocar los botones encima de la imagen.
+   object-fit: cover recorta la imagen sin deformarla.
+*/
+.slider {
+    position: relative;
+    min-height: 430px;
+    overflow: hidden;
+    border-radius: 28px;
+    background: #07123d;
+}
+
+.slider img {
+    height: 430px;
+    object-fit: cover;
+    transition: opacity 0.25s ease;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.86);
+    color: #001391;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.slider-btn:hover {
+    background: #fff;
+}
+
+.prev {
+    left: 16px;
+}
+
+.next {
+    right: 16px;
+}
+
+/* =========================================================
+   5. Cards de productos
+   Las tarjetas estan en grid para que todas mantengan el mismo
+   ancho en escritorio. La card destacada usa colores invertidos
+   para llamar mas la atencion.
+========================================================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 28px 0;
+}
+
+.card,
+.servicios,
+.servicios-grid article {
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.card {
+    padding: 28px;
+}
+
+.card h2,
+.servicios h2,
+.section-title h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    letter-spacing: -0.04em;
+}
+
+.card p,
+.servicios p,
+.footer p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.card.destacada {
+    background: #001391;
+    color: #fff;
+}
+
+.card.destacada p {
+    color: #dbeafe;
+}
+
+.card.destacada button {
+    background: #fff;
+    color: #001391;
+}
+
+/* =========================================================
+   6. Servicios
+   Este bloque separa el titulo de la lista de beneficios para
+   que se lea como una seccion informativa, no como otra card mas.
+========================================================= */
+.servicios {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 26px;
+    padding: 32px;
+    margin-bottom: 28px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.servicios-grid article {
+    padding: 20px;
+    background: #f8fbff;
+}
+
+.servicios-grid h3 {
+    margin: 0 0 8px;
+}
+
+/* =========================================================
+   7. Galeria mosaico
+   CSS Grid permite que algunas imagenes ocupen mas espacio que
+   otras. Esto rompe la monotonia y crea el efecto de mosaico.
+========================================================= */
+.galeria {
+    padding: 30px;
+    border-radius: 34px;
+    background: #fff;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.mosaico {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 170px;
+    gap: 14px;
+}
+
+.mosaico img {
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/*
+   Estas reglas dan tamanos distintos a algunas imagenes.
+   Si quieres un mosaico uniforme, puedes borrar estos nth-child.
+*/
+.mosaico img:nth-child(1),
+.mosaico img:nth-child(8) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.mosaico img:nth-child(5),
+.mosaico img:nth-child(10) {
+    grid-row: span 2;
+}
+
+/* =========================================================
+   8. Footer
+   El footer usa flex para separar texto y enlaces. En movil se
+   apila porque hay menos espacio horizontal.
+========================================================= */
+.footer {
+    width: min(1180px, calc(100% - 28px));
+    margin: 28px auto 18px;
+    padding: 28px;
+    border-radius: 28px;
+    background: #061040;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer h2 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.08em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   9. Media queries
+   Primero se adapta tablet/movil grande y luego movil pequeno.
+   La idea es reducir columnas antes de que el contenido se apriete.
+========================================================= */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    /*
+       El menu movil se oculta por defecto. JavaScript agrega .activo
+       cuando el usuario pulsa el boton hamburguesa.
+    */
+    .navegacion {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        border-radius: 22px;
+        background: #001391;
+    }
+
+    .navegacion.activo {
+        display: flex;
+    }
+
+    .item-menu {
+        text-align: center;
+    }
+
+    .hero,
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+
+    .cards,
+    .servicios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mosaico {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 150px;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-header,
+    .container,
+    .footer {
+        width: min(100% - 18px, 1180px);
+    }
+
+    .site-header {
+        min-height: 72px;
+        padding: 0 16px;
+        border-radius: 18px;
+    }
+
+    .hero,
+    .servicios,
+    .galeria {
+        padding: 18px;
+        border-radius: 24px;
+    }
+
+    .slider,
+    .slider img {
+        min-height: 280px;
+        height: 280px;
+    }
+
+    .mosaico {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+
+    /*
+       En celular el mosaico vuelve a imagenes simples para que no haya
+       recortes exagerados ni columnas demasiado estrechas.
+    */
+    .mosaico img:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}

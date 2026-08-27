@@ -1,0 +1,25 @@
+.padre{
+    width: 80%;
+    background-color: black;
+    height: 700px;
+    display: flex;
+}
+
+.hijo{
+    background-color: aqua;
+    height: 250px;
+    width: 250px;
+    border: solid #000 1px;
+}
+
+@media screen and (max-width: 758px){
+    .padre{
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .hijo{
+        width: 100%;
+        height: 100px;
+    }
+}

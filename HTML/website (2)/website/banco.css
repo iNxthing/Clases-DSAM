@@ -1,0 +1,479 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a:link {
+    color: #070E46;
+}
+
+.link-logo {
+    text-decoration: none;
+}
+
+.link-logo:link {
+    color: #FFF !important;
+}
+
+/* DEFINIR EL ESTILO */
+.open-sans {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+body {
+    /* background-color: lightgray; */
+}
+
+.menu {
+    height: 90px;
+    width: 95%;
+    background-color: #001391;
+    color: #FFF;
+    margin: 10px auto;
+    border-radius: 20px;
+
+    display: flex;
+}
+
+.logo-header {
+    width: 20%;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+
+.logo-footer {
+    width: 20%;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+
+.menu-toggle {
+    border: none;
+    background: #001391;
+    padding: 10px;
+    width: 100%;
+    text-align: end;
+    display: none;
+}
+
+.menu-toggle:hover {
+    cursor: pointer;
+}
+
+.navegacion {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav-group {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.item-menu-icon {
+    display: block;
+    border: solid red 2x;
+}
+
+.item-menu {
+    width: 20%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid #FFF 1px;
+    border-radius: 1rem;
+}
+
+.item-menu:hover {
+    cursor: pointer;
+    background-color: #FFF;
+    color: #001391;
+}
+
+.banner {
+    height: 430px;
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 1rem;
+    background-color: black;
+}
+
+.imagen-ppal {
+    grid-row: span 2;
+    width: 100%;
+    height: calc(100% - 10px);
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.banner-image {
+    background-image: url(imagenes/blacWallet.jpg);
+    background-size: cover;
+    border-radius: 0 10px 10px 0;
+}
+
+.imagen-second {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.cartas {
+    height: 300px;
+    width: 95%;
+    margin: 1rem auto;
+    display: flex;
+    gap: 1rem;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.imagen-card {
+    width: 100%;
+    height: 70%;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.detalle {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: #85C8F5;
+    color: #070E46;
+}
+
+.ver-mas {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #070E46;
+    color: #FFF;
+}
+
+.ver-mas:hover {
+    cursor: pointer;
+    background-color: #FFF;
+    color: #070E46;
+}
+
+.test {
+    border: solid red 1px;
+}
+
+.banner-info {
+    background-image: linear-gradient(to bottom, #85C8F5, #070E46);
+    border-radius: 10px 0 0 10px;
+    padding: 4.2rem 1rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.open-sans-drakblue {
+    color: #070E46;
+    font-weight: 700;
+}
+
+
+.banner-button {
+    padding: 1rem 2rem;
+    background-color: aliceblue;
+    font-size: 1rem;
+    border: none;
+    width: fit-content;
+}
+
+.main-tittle {
+
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 95%;
+}
+
+
+.footer {
+    width: 100%;
+    height: 280px;
+    background-color: #070E46;
+    display: flex;
+}
+
+.fot-1 {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fot-2 {
+    width: 25%;
+    height: 100%;
+
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fot-3 {
+    width: 30%;
+    height: 100%;
+
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fot-4 {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-size: 2rem;
+    gap: 1rem;
+
+}
+
+/* Aquí voy a establecer el estilo del SLIDER */
+
+body {
+    overflow-x: hidden;
+}
+
+.banner-slider {
+    height: 500px;
+    width: 400vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    z-index: 1;
+    transition: left 0.5s ease-in-out;
+}
+
+.flotante {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    font-size: 2.5rem;
+    z-index: 100;
+    background: none;
+    border: none;
+    color: aliceblue;
+    border-radius: 9999px;
+    border: solid 2px aliceblue;
+}
+
+.flotante:hover {
+
+    cursor: pointer;
+}
+
+.atras {
+    top: calc(50% - 50px);
+    left: 10px;
+}
+
+.adelante {
+    top: calc(50% - 50px);
+    left: 95vw;
+}
+
+.slide {
+    height: 100%;
+    width: 100vw;
+    position: relative;
+}
+
+.image {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content-point {
+    z-index: 1000;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: 580px;
+    display: flex;
+    width: fit-content;
+    gap: 10px;
+}
+
+.point {
+    height: 25px;
+    width: 25px;
+    background-color: gray;
+    border-radius: 9999px;
+}
+
+
+@media screen and (max-width: 680px) {
+
+    .cartas {
+        height: fit-content;
+        flex-direction: column;
+        width: 90%;
+        gap: 10px;
+    }
+
+    .card {
+        width: 100%;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    .fot-1,
+    .fot-2,
+    .fot-3,
+    .fot-4 {
+        width: 100%;
+        height: 150px;
+    }
+
+
+
+    .banner {
+        height: fit-content;
+        width: 95%;
+        margin: 1rem auto;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr;
+    }
+
+
+    .banner-image {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 570px) {
+
+    .menu {
+        height: fit-content;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .logo-header {
+        display: none;
+    }
+
+    .navegacion {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        position: relative;
+        left: -100%;
+    }
+
+    .menu_visible {
+        left: 0;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .nav-group {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 0;
+    }
+
+    .item-menu {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid #FFF 1px;
+        border-radius: 0;
+    }
+
+    .item-menu-icon {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 1rem;
+        font-size: 2rem;
+    }
+
+    .item-menu-icon:hover {
+        cursor: pointer;
+    }
+
+
+
+}

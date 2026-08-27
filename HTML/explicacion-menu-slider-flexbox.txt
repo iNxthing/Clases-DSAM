@@ -1,0 +1,1342 @@
+============================================================
+[MORADO] EXPLICACION: MENU HAMBURGUESA, SLIDER Y FLEXBOX
+============================================================
+
+LEYENDA VISUAL PARA ESTUDIAR
+============================
+
+[AZUL]    HTML / estructura
+[ROSA]    CSS / estilos visuales
+[AMARILLO] JavaScript / comportamiento
+[VERDE]   Idea importante o regla mental
+[ROJO]    Error comun o advertencia
+[MORADO]  Tema principal
+[GRIS]    Nota o aclaracion
+
+Nota: este es un archivo .txt, por eso no puede mostrar colores reales como una
+pagina web. Uso etiquetas como [AZUL], [ROSA] y [VERDE] para que tu cerebro
+separe mejor los temas al leer.
+
+Este archivo esta pensado para que puedas repasarlo cuando estes practicando.
+La idea no es solo decir que hace cada propiedad, sino explicar por que se usa,
+como se conecta HTML + CSS + JavaScript y que debes mirar cuando algo no funciona.
+
+
+[MORADO] INDICE
+======
+
+1. Como pensar una pagina web por capas
+2. Menu hamburguesa responsive
+3. Banner/slider con imagenes desplazables
+4. Flexbox explicado desde cero
+5. Diferencia rapida entre Flexbox y Grid
+6. Errores comunes y como detectarlos
+
+
+[MORADO] 1. COMO PENSAR UNA PAGINA WEB POR CAPAS
+=======================================
+
+Antes de entrar al menu hamburguesa o al slider, conviene tener clara esta idea:
+
+[AZUL] HTML = estructura
+[ROSA] CSS = apariencia y posicionamiento
+[AMARILLO] JavaScript = comportamiento/interaccion
+
+Ejemplo:
+
+[AZUL] HTML crea el boton:
+
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+[ROSA] CSS hace que parezca una hamburguesa:
+
+    .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: white;
+    }
+
+[AMARILLO] JavaScript hace que al pulsarlo abra o cierre el menu:
+
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('activo');
+    });
+
+[VERDE] La clave es entender que cada tecnologia cumple una funcion distinta.
+
+[ROJO] Si el boton no aparece, probablemente es HTML o CSS.
+[ROJO] Si aparece pero no se ve bien, probablemente es CSS.
+[ROJO] Si se ve bien pero no abre el menu, probablemente es JavaScript.
+
+
+[MORADO] 2. MENU HAMBURGUESA RESPONSIVE
+==============================
+
+Un menu hamburguesa normalmente se usa en dispositivos moviles porque no hay
+suficiente espacio para mostrar todos los enlaces horizontalmente.
+
+En escritorio puedes tener esto:
+
+    Inicio    Productos    Servicios    Galeria    Contacto
+
+Pero en movil eso se puede ver apretado o romper la pantalla. Entonces se usa:
+
+    [☰]
+
+Al tocarlo, aparece el menu:
+
+    Inicio
+    Productos
+    Servicios
+    Galeria
+    Contacto
+
+
+[AZUL] 2.1. ESTRUCTURA HTML DEL MENU
+-----------------------------
+
+En tu archivo HTML hay una estructura parecida a esta:
+
+    <header class="site-header">
+        <a class="logo-header" href="#inicio">BBVA</a>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="navegacion" id="menu">
+            <a class="item-menu" href="#inicio">Inicio</a>
+            <a class="item-menu" href="#productos">Productos</a>
+            <a class="item-menu" href="#servicios">Servicios</a>
+            <a class="item-menu" href="#galeria">Galeria</a>
+            <a class="item-menu btn-menu" href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+Aqui hay tres partes importantes:
+
+1. Logo:
+
+    <a class="logo-header" href="#inicio">BBVA</a>
+
+2. Boton hamburguesa:
+
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+3. Menu real:
+
+    <nav class="navegacion" id="menu">
+        ... enlaces ...
+    </nav>
+
+El boton hamburguesa no es el menu. El boton solo controla si el menu se muestra
+
+El menu real es el <nav>.
+
+
+[AZUL] 2.2. POR QUE EL BOTON TIENE TRES SPAN
+-------------------------------------
+
+Esto:
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+representa las tres lineas del icono hamburguesa.
+
+Visualmente:
+
+    -------
+    -------
+    -------
+
+Cada span es una linea.
+
+Luego CSS les da ancho, alto y color:
+
+    .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        margin: 5px auto;
+        background: #fff;
+    }
+
+display: block hace que cada span se comporte como una linea separada.
+
+width: 24px define el largo de cada linea.
+
+height: 3px define el grosor.
+
+margin: 5px auto separa una linea de otra y las centra.
+
+background: #fff les da color blanco.
+
+
+[ROSA] 2.3. HEADER EN ESCRITORIO
+-------------------------
+
+En escritorio el header usa flexbox:
+
+    .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+Esto organiza el logo, el boton y el menu dentro del header.
+
+Pero en escritorio el boton hamburguesa esta oculto:
+
+    .menu-toggle {
+        display: none;
+    }
+
+Por eso solo ves logo y enlaces.
+
+El menu se ve horizontal porque .navegacion tambien usa flex:
+
+    .navegacion {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+Visualmente:
+
+    [BBVA]                         [Inicio] [Productos] [Servicios] [Galeria]
+
+
+[ROSA] 2.4. MEDIA QUERY: CAMBIAR COMPORTAMIENTO EN MOVIL
+-------------------------------------------------
+
+La media query es la parte que dice:
+
+"Cuando la pantalla sea menor o igual a cierto ancho, cambia estos estilos".
+
+Ejemplo:
+
+    @media (max-width: 900px) {
+        .menu-toggle {
+            display: block;
+        }
+
+        .navegacion {
+            display: none;
+        }
+    }
+
+Esto significa:
+
+Si la pantalla mide 900px o menos:
+
+1. Muestra el boton hamburguesa.
+2. Oculta el menu.
+
+Entonces en movil pasa esto:
+
+    [BBVA]                                      [☰]
+
+El menu no desaparece del HTML. Solo se oculta visualmente con CSS.
+
+
+[VERDE] 2.5. MENU OCULTO Y MENU ACTIVO
+------------------------------
+
+En movil, el menu esta oculto asi:
+
+    .navegacion {
+        display: none;
+    }
+
+Pero tambien existe esta regla:
+
+    .navegacion.activo {
+        display: flex;
+    }
+
+Esta parte es muy importante.
+
+.navegacion significa:
+
+    Elemento que tiene la clase navegacion.
+
+.navegacion.activo significa:
+
+    Elemento que tiene las clases navegacion y activo al mismo tiempo.
+
+Ejemplo sin activo:
+
+    <nav class="navegacion">
+
+Ejemplo con activo:
+
+    <nav class="navegacion activo">
+
+Cuando no tiene activo:
+
+    display: none;
+
+Cuando si tiene activo:
+
+    display: flex;
+
+[VERDE] Ese es todo el truco del menu hamburguesa.
+
+[AMARILLO] JavaScript no dibuja el menu.
+[AMARILLO] JavaScript solo agrega o quita una clase.
+[ROSA] CSS decide como se ve esa clase.
+
+
+[AMARILLO] 2.6. JAVASCRIPT DEL MENU
+------------------------
+
+Primero se buscan los elementos:
+
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+Esto significa:
+
+Busca en el HTML el elemento con id="menuToggle" y guardalo en la variable menuToggle.
+
+Busca en el HTML el elemento con id="menu" y guardalo en la variable menu.
+
+Luego se escucha el click:
+
+    menuToggle.addEventListener('click', () => {
+        const estaAbierto = menu.classList.toggle('activo');
+    });
+
+addEventListener significa:
+
+"Cuando pase este evento, ejecuta esta funcion".
+
+En este caso:
+
+Cuando el usuario haga click en menuToggle, ejecuta el codigo de adentro.
+
+classList.toggle('activo') hace esto:
+
+Si el menu NO tiene la clase activo, se la agrega.
+Si el menu SI tiene la clase activo, se la quita.
+
+Es como un interruptor:
+
+    apagado -> encendido
+    encendido -> apagado
+
+Por eso sirve perfecto para abrir/cerrar.
+
+
+[VERDE] 2.7. POR QUE SE USA aria-expanded Y aria-label
+----------------------------------------------
+
+En tu JavaScript tambien aparece esto:
+
+    menuToggle.setAttribute('aria-expanded', estaAbierto);
+    menuToggle.setAttribute('aria-label', estaAbierto ? 'Cerrar menu' : 'Abrir menu');
+
+Esto es para accesibilidad.
+
+aria-expanded le dice a tecnologias de asistencia si el menu esta abierto o cerrado.
+
+aria-label cambia el texto descriptivo del boton.
+
+Si el menu esta cerrado, el boton significa:
+
+    Abrir menu
+
+Si el menu esta abierto, el boton significa:
+
+    Cerrar menu
+
+No cambia mucho visualmente, pero mejora la calidad del codigo.
+
+
+[AMARILLO] 2.8. CERRAR EL MENU AL TOCAR UN ENLACE
+--------------------------------------
+
+Este codigo:
+
+    menu.addEventListener('click', (event) => {
+        if (event.target.classList.contains('item-menu')) {
+            menu.classList.remove('activo');
+            menuToggle.classList.remove('activo');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Abrir menu');
+        }
+    });
+
+Sirve para que cuando pulses un enlace del menu, el menu se cierre.
+
+Por ejemplo, en movil:
+
+1. Abres el menu.
+2. Tocas "Galeria".
+3. La pagina baja hasta Galeria.
+4. El menu se cierra automaticamente.
+
+Si no haces esto, el menu puede quedar abierto y tapar el contenido.
+
+event.target significa:
+
+El elemento exacto que recibio el click.
+
+classList.contains('item-menu') pregunta:
+
+"El elemento clickeado tiene la clase item-menu?"
+
+Si la respuesta es si, entonces cierra el menu.
+
+
+[ROSA] 2.9. ANIMACION DE HAMBURGUESA A X
+---------------------------------
+
+Cuando el boton tiene la clase activo:
+
+    .menu-toggle.activo span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.activo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.activo span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+La primera linea baja y rota.
+La segunda linea desaparece.
+La tercera linea sube y rota.
+
+Visualmente pasa de:
+
+    -------
+    -------
+    -------
+
+a:
+
+       \ /
+        X
+       / \
+
+Realmente no se dibuja una X nueva. Se transforman las mismas tres lineas.
+
+
+[MORADO] 3. BANNER / SLIDER CON IMAGENES DESPLAZABLES
+============================================
+
+Un slider es una zona donde se muestra una imagen, y esa imagen puede cambiar
+con botones o automaticamente.
+
+En tu pagina el slider tiene:
+
+1. Una imagen visible.
+2. Un boton para retroceder.
+3. Un boton para avanzar.
+4. Un array de imagenes en JavaScript.
+5. Una funcion que cambia la imagen.
+6. Un setInterval para cambiar solo cada cierto tiempo.
+
+
+[AZUL] 3.1. HTML DEL SLIDER
+--------------------
+
+Estructura:
+
+    <div class="slider" aria-label="Banner de imagenes">
+        <button class="slider-btn prev" id="prevSlide" type="button" aria-label="Imagen anterior">&#10094;</button>
+        <img id="sliderImage" src="wp13674951-tv-girl-pc-wallpapers.jpg" alt="Imagen destacada del banner">
+        <button class="slider-btn next" id="nextSlide" type="button" aria-label="Imagen siguiente">&#10095;</button>
+    </div>
+
+Partes:
+
+Contenedor:
+
+    <div class="slider">
+
+Boton anterior:
+
+    <button id="prevSlide">&#10094;</button>
+
+Imagen visible:
+
+    <img id="sliderImage" src="...">
+
+Boton siguiente:
+
+    <button id="nextSlide">&#10095;</button>
+
+Los simbolos &#10094; y &#10095; son flechas:
+
+    ❮   ❯
+
+
+[ROSA] 3.2. CSS DEL CONTENEDOR SLIDER
+------------------------------
+
+    .slider {
+        position: relative;
+        min-height: 430px;
+        overflow: hidden;
+        border-radius: 28px;
+        background: #07123d;
+    }
+
+position: relative es importante porque permite posicionar los botones dentro del slider.
+
+Si el contenedor es relative, los botones con position absolute se posicionan respecto al slider,
+no respecto a toda la pagina.
+
+min-height: 430px le da altura al bloque.
+
+overflow: hidden oculta cualquier parte de la imagen que se salga del contenedor.
+
+border-radius: 28px redondea el contenedor.
+
+
+[ROSA] 3.3. CSS DE LA IMAGEN
+---------------------
+
+    .slider img {
+        height: 430px;
+        object-fit: cover;
+        transition: opacity 0.25s ease;
+    }
+
+height: 430px fuerza una altura fija.
+
+object-fit: cover hace que la imagen cubra todo el espacio sin deformarse.
+
+Esto es importante.
+
+Sin object-fit, una imagen puede verse aplastada o estirada.
+
+Con object-fit: cover, la imagen mantiene su proporcion original, pero se recorta si hace falta.
+
+transition: opacity 0.25s ease permite que el cambio de opacidad sea suave.
+
+
+[ROSA] 3.4. CSS DE LOS BOTONES DEL SLIDER
+----------------------------------
+
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        transform: translateY(-50%);
+    }
+
+position: absolute permite colocar el boton encima de la imagen.
+
+top: 50% baja el boton hasta la mitad del slider.
+
+transform: translateY(-50%) corrige el centrado.
+
+Por que hace falta transform?
+
+Porque top: 50% coloca la esquina superior del boton en el centro.
+Pero nosotros queremos que el centro del boton este en el centro.
+
+Entonces translateY(-50%) sube el boton la mitad de su propia altura.
+
+Visualmente:
+
+Sin transform:
+
+    centro del slider -> [boton empieza aqui]
+
+Con transform:
+
+    centro del slider -> [centro del boton]
+
+Luego se colocan a izquierda y derecha:
+
+    .prev {
+        left: 16px;
+    }
+
+    .next {
+        right: 16px;
+    }
+
+
+[AMARILLO] 3.5. JAVASCRIPT DEL SLIDER
+--------------------------
+
+Primero se buscan elementos:
+
+    const sliderImage = document.getElementById('sliderImage');
+    const prevSlide = document.getElementById('prevSlide');
+    const nextSlide = document.getElementById('nextSlide');
+
+Luego se define la lista de imagenes:
+
+    const imagenes = [
+        'wp13674951-tv-girl-pc-wallpapers.jpg',
+        'https://picsum.photos/1100/700?random=20',
+        'https://picsum.photos/1100/700?random=21',
+        'https://picsum.photos/1100/700?random=22'
+    ];
+
+Esto se llama array.
+
+Un array es una lista ordenada.
+
+Cada imagen tiene una posicion:
+
+    imagenes[0] = primera imagen
+    imagenes[1] = segunda imagen
+    imagenes[2] = tercera imagen
+    imagenes[3] = cuarta imagen
+
+En JavaScript los arrays empiezan en 0, no en 1.
+
+
+[AMARILLO] 3.6. VARIABLE DE IMAGEN ACTUAL
+------------------------------
+
+    let imagenActual = 0;
+
+Esto significa:
+
+Ahora mismo estamos mostrando la imagen en la posicion 0.
+
+Si imagenActual vale 0, se muestra:
+
+    imagenes[0]
+
+Si imagenActual vale 1, se muestra:
+
+    imagenes[1]
+
+
+[AMARILLO] 3.7. FUNCION mostrarImagen
+--------------------------
+
+    function mostrarImagen(indice) {
+        imagenActual = (indice + imagenes.length) % imagenes.length;
+
+        sliderImage.style.opacity = '0';
+
+        setTimeout(() => {
+            sliderImage.src = imagenes[imagenActual];
+            sliderImage.style.opacity = '1';
+        }, 180);
+    }
+
+Esta funcion recibe un indice y cambia la imagen visible.
+
+Ejemplo:
+
+    mostrarImagen(2);
+
+Eso mostraria la imagen en la posicion 2.
+
+
+[VERDE] 3.8. POR QUE SE USA MODULO %
+----------------------------
+
+Esta linea parece dificil al principio:
+
+    imagenActual = (indice + imagenes.length) % imagenes.length;
+
+Pero su objetivo es sencillo:
+
+Evitar que el slider se salga de la lista.
+
+Supongamos que hay 4 imagenes.
+
+Entonces:
+
+    imagenes.length = 4
+
+Los indices validos son:
+
+    0, 1, 2, 3
+
+No existe imagenes[4].
+
+Si estas en la imagen 3 y das siguiente, el indice seria 4.
+
+Pero queremos volver a 0.
+
+Con modulo:
+
+    4 % 4 = 0
+
+Entonces vuelve al inicio.
+
+Si estas en la imagen 0 y das anterior, el indice seria -1.
+
+Queremos ir a la ultima imagen, que es 3.
+
+La formula:
+
+    (indice + imagenes.length) % imagenes.length
+
+convierte -1 en 3.
+
+Ejemplo:
+
+    (-1 + 4) % 4
+    3 % 4
+    3
+
+Resultado: ultima imagen.
+
+
+[AMARILLO] 3.9. CAMBIO SUAVE DE IMAGEN
+---------------------------
+
+Dentro de mostrarImagen aparece esto:
+
+    sliderImage.style.opacity = '0';
+
+    setTimeout(() => {
+        sliderImage.src = imagenes[imagenActual];
+        sliderImage.style.opacity = '1';
+    }, 180);
+
+Primero baja la opacidad a 0, o sea, la imagen se desvanece.
+
+Despues de 180 milisegundos:
+
+1. Cambia el src de la imagen.
+2. Sube la opacidad a 1.
+
+El src es la ruta de la imagen.
+
+En HTML tienes:
+
+    <img src="imagen.jpg">
+
+JavaScript cambia eso dinamicamente:
+
+    sliderImage.src = 'otra-imagen.jpg';
+
+No crea otra etiqueta img. Solo cambia la imagen de la misma etiqueta.
+
+
+[AMARILLO] 3.10. BOTONES ANTERIOR Y SIGUIENTE
+----------------------------------
+
+    prevSlide.addEventListener('click', () => {
+        mostrarImagen(imagenActual - 1);
+    });
+
+    nextSlide.addEventListener('click', () => {
+        mostrarImagen(imagenActual + 1);
+    });
+
+Boton anterior:
+
+    imagenActual - 1
+
+Boton siguiente:
+
+    imagenActual + 1
+
+Si estas en imagen 2:
+
+Anterior manda a 1.
+Siguiente manda a 3.
+
+Si te sales de rango, la funcion mostrarImagen lo corrige con modulo.
+
+
+[AMARILLO] 3.11. CAMBIO AUTOMATICO
+-----------------------
+
+    setInterval(() => {
+        mostrarImagen(imagenActual + 1);
+    }, 6000);
+
+setInterval ejecuta una funcion cada cierto tiempo.
+
+6000 significa 6000 milisegundos.
+
+1000 milisegundos = 1 segundo.
+
+Entonces:
+
+6000 milisegundos = 6 segundos.
+
+Cada 6 segundos se llama:
+
+    mostrarImagen(imagenActual + 1);
+
+O sea, avanza una imagen.
+
+
+[MORADO] 4. FLEXBOX EXPLICADO DESDE CERO
+===============================
+
+Flexbox es un sistema de CSS para acomodar elementos en una direccion:
+
+horizontal o vertical.
+
+Es muy bueno para:
+
+1. Centrar elementos.
+2. Hacer menus horizontales.
+3. Separar logo y enlaces.
+4. Alinear botones.
+5. Crear filas simples.
+6. Distribuir espacio entre elementos.
+
+La idea principal es:
+
+El contenedor tiene display: flex.
+Los hijos se acomodan segun las reglas del contenedor.
+
+
+[VERDE] 4.1. EJEMPLO BASICO
+-------------------
+
+HTML:
+
+    <div class="contenedor">
+        <div class="caja">1</div>
+        <div class="caja">2</div>
+        <div class="caja">3</div>
+    </div>
+
+CSS:
+
+    .contenedor {
+        display: flex;
+    }
+
+Resultado:
+
+    [1] [2] [3]
+
+Sin flex, como los div son elementos de bloque, se verian asi:
+
+    [1]
+    [2]
+    [3]
+
+Con display: flex se ponen en fila por defecto.
+
+
+[ROSA] 4.2. flex-direction
+-------------------
+
+Define la direccion principal.
+
+    .contenedor {
+        display: flex;
+        flex-direction: row;
+    }
+
+row es el valor por defecto.
+
+Resultado:
+
+    [1] [2] [3]
+
+Tambien puedes usar column:
+
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+    }
+
+Resultado:
+
+    [1]
+    [2]
+    [3]
+
+Esto se usa mucho en menus moviles:
+
+En escritorio:
+
+    flex-direction: row;
+
+En movil:
+
+    flex-direction: column;
+
+
+[ROSA] 4.3. justify-content
+--------------------
+
+justify-content alinea los elementos en el eje principal.
+
+Si flex-direction es row, el eje principal es horizontal.
+
+Ejemplo:
+
+    .contenedor {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+Resultado:
+
+    [1][2][3]                       
+
+flex-start los manda al inicio.
+
+    justify-content: center;
+
+Resultado:
+
+             [1][2][3]
+
+    justify-content: flex-end;
+
+Resultado:
+
+                       [1][2][3]
+
+    justify-content: space-between;
+
+Resultado:
+
+    [1]            [2]            [3]
+
+    justify-content: space-around;
+
+Resultado aproximado:
+
+      [1]          [2]          [3]
+
+    justify-content: space-evenly;
+
+Resultado aproximado:
+
+        [1]        [2]        [3]
+
+space-between es muy usado en headers:
+
+    .site-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+Porque quieres el logo a la izquierda y el menu a la derecha.
+
+Visualmente:
+
+    [LOGO]                                      [MENU]
+
+
+[ROSA] 4.4. align-items
+----------------
+
+align-items alinea los elementos en el eje contrario.
+
+Si flex-direction es row, el eje principal es horizontal y el eje contrario es vertical.
+
+Ejemplo:
+
+    .site-header {
+        display: flex;
+        align-items: center;
+    }
+
+Esto centra verticalmente el logo y el menu dentro del header.
+
+Sin align-items: center puede pasar que los elementos queden pegados arriba.
+
+Con align-items: center:
+
+    ┌──────────────────────────────┐
+    │          [LOGO] [MENU]        │
+    └──────────────────────────────┘
+
+Valores comunes:
+
+    align-items: flex-start;
+
+Los elementos se pegan arriba.
+
+    align-items: center;
+
+Los elementos se centran verticalmente.
+
+    align-items: flex-end;
+
+Los elementos se pegan abajo.
+
+    align-items: stretch;
+
+Los elementos se estiran si no tienen alto definido.
+
+
+[ROSA] 4.5. gap
+--------
+
+gap agrega espacio entre elementos flex.
+
+    .navegacion {
+        display: flex;
+        gap: 8px;
+    }
+
+Resultado:
+
+    [Inicio]  [Productos]  [Servicios]
+
+Antes se usaban margenes para separar elementos. Ahora gap es mas limpio.
+
+
+[ROSA] 4.6. flex-wrap
+--------------
+
+Por defecto, flex intenta poner todo en una sola linea.
+
+Si no cabe, puede apretarse mucho.
+
+Con flex-wrap permites que los elementos bajen a otra linea:
+
+    .footer-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+Si hay espacio:
+
+    [Inicio] [Productos] [Galeria]
+
+Si no hay espacio:
+
+    [Inicio] [Productos]
+    [Galeria]
+
+Esto es util en footers, listas de etiquetas, botones, chips, categorias, etc.
+
+
+[VERDE] 4.7. CENTRAR ALGO PERFECTAMENTE CON FLEX
+----------------------------------------
+
+Una de las cosas mas comunes:
+
+    .caja {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+Esto centra el contenido horizontal y verticalmente.
+
+Si la caja mide 300x300:
+
+    ┌───────────────────┐
+    │                   │
+    │        TEXTO       │
+    │                   │
+    └───────────────────┘
+
+justify-content centra en el eje principal.
+align-items centra en el eje secundario.
+
+Con flex-direction: row:
+
+justify-content = horizontal
+align-items = vertical
+
+Con flex-direction: column:
+
+justify-content = vertical
+align-items = horizontal
+
+Esto confunde al principio, pero es clave.
+
+
+[ROSA] 4.8. FLEX EN TU HEADER
+----------------------
+
+Tu header usa:
+
+    .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+Esto logra:
+
+1. display: flex pone logo, boton y menu en una misma linea.
+2. align-items: center los centra verticalmente.
+3. justify-content: space-between separa los extremos.
+4. gap evita que se peguen cuando hay poco espacio.
+
+Visualmente:
+
+    ┌────────────────────────────────────────────┐
+    │ BBVA                         Inicio Menu   │
+    └────────────────────────────────────────────┘
+
+
+[ROSA] 4.9. FLEX EN TU MENU
+--------------------
+
+    .navegacion {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+Esto hace que los enlaces se acomoden en fila:
+
+    [Inicio] [Productos] [Servicios] [Galeria] [Contacto]
+
+En movil, dentro de la media query, cambia:
+
+    .navegacion {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+Entonces pasa a:
+
+    [Inicio]
+    [Productos]
+    [Servicios]
+    [Galeria]
+    [Contacto]
+
+align-items: stretch hace que los enlaces ocupen el ancho disponible.
+
+
+[ROSA] 4.10. FLEX EN BOTONES
+---------------------
+
+Tus botones usan:
+
+    .btn-principal,
+    .card button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+Esto centra el texto dentro del boton.
+
+inline-flex significa:
+
+El boton se comporta como un elemento en linea por fuera,
+pero por dentro usa flexbox.
+
+Asi el texto queda centrado aunque el boton tenga alto fijo.
+
+
+[MORADO] 5. DIFERENCIA RAPIDA ENTRE FLEXBOX Y GRID
+=========================================
+
+Flexbox y Grid pueden parecer parecidos, pero no son lo mismo.
+
+FLEXBOX:
+
+Se usa principalmente para una dimension.
+
+Una fila:
+
+    [1] [2] [3]
+
+O una columna:
+
+    [1]
+    [2]
+    [3]
+
+GRID:
+
+Se usa para dos dimensiones.
+
+Filas y columnas:
+
+    [1] [2] [3]
+    [4] [5] [6]
+    [7] [8] [9]
+
+Usa Flexbox para:
+
+1. Header.
+2. Navbar.
+3. Centrar contenido.
+4. Botones.
+5. Pequeños grupos de elementos.
+
+Usa Grid para:
+
+1. Cards en columnas.
+2. Galerias.
+3. Mosaicos.
+4. Layouts con filas y columnas.
+5. Secciones complejas.
+
+
+[ROJO] 6. ERRORES COMUNES Y COMO DETECTARLOS
+=====================================
+
+[ROJO] ERROR 1: El menu no abre
+------------------------
+
+Revisa:
+
+1. Que el boton tenga id="menuToggle".
+2. Que el nav tenga id="menu".
+3. Que script.js este enlazado al final del body.
+4. Que no haya errores en la consola.
+
+HTML correcto:
+
+    <button id="menuToggle"></button>
+    <nav id="menu"></nav>
+    <script src="script.js"></script>
+
+
+[ROJO] ERROR 2: El menu abre, pero no se ve
+------------------------------------
+
+Revisa CSS:
+
+    .navegacion.activo {
+        display: flex;
+    }
+
+Si esta regla falta, JavaScript puede agregar la clase activo, pero CSS no sabra que hacer con ella.
+
+
+[ROJO] ERROR 3: El boton hamburguesa aparece tambien en escritorio
+----------------------------------------------------------
+
+Revisa que por defecto tenga:
+
+    .menu-toggle {
+        display: none;
+    }
+
+Y que dentro de media query tenga:
+
+    @media (max-width: 900px) {
+        .menu-toggle {
+            display: block;
+        }
+    }
+
+
+[ROJO] ERROR 4: El slider no cambia imagen
+-----------------------------------
+
+Revisa:
+
+1. Que la imagen tenga id="sliderImage".
+2. Que los botones tengan id="prevSlide" y id="nextSlide".
+3. Que las rutas de las imagenes sean correctas.
+4. Que script.js este bien enlazado.
+
+
+[ROJO] ERROR 5: La imagen del slider se deforma
+----------------------------------------
+
+Usa:
+
+    .slider img {
+        width: 100%;
+        height: 430px;
+        object-fit: cover;
+    }
+
+object-fit: cover evita que la imagen se estire mal.
+
+
+[ROJO] ERROR 6: Flexbox no hace nada
+-----------------------------
+
+Recuerda:
+
+display: flex se pone en el contenedor, no necesariamente en cada hijo.
+
+Correcto:
+
+    .contenedor {
+        display: flex;
+    }
+
+    .caja {
+        background: red;
+    }
+
+Incorrecto si quieres organizar varias cajas:
+
+    .caja {
+        display: flex;
+    }
+
+Porque eso haria flex el contenido interno de cada caja, no la relacion entre las cajas.
+
+
+[MORADO] RESUMEN FINAL
+=============
+
+[VERDE] MENU HAMBURGUESA:
+
+1. HTML crea boton y nav.
+2. CSS oculta el boton en escritorio y lo muestra en movil.
+3. CSS oculta el nav en movil.
+4. JavaScript agrega/quita la clase activo.
+5. CSS muestra el nav cuando tiene .activo.
+
+[VERDE] SLIDER:
+
+1. HTML tiene una imagen y dos botones.
+2. JavaScript guarda una lista de imagenes.
+3. Una variable recuerda cual imagen esta activa.
+4. Los botones suman o restan el indice.
+5. La funcion mostrarImagen cambia el src.
+6. setInterval avanza automaticamente cada cierto tiempo.
+
+[VERDE] FLEXBOX:
+
+1. Se activa con display: flex.
+2. Organiza hijos en fila o columna.
+3. justify-content controla el eje principal.
+4. align-items controla el eje secundario.
+5. gap separa elementos.
+6. flex-wrap permite saltar a otra linea.
+
+[VERDE] Frase importante para recordar:
+
+El contenedor decide como se acomodan los hijos.
+
+Ejemplo:
+
+    .padre {
+        display: flex;
+    }
+
+Los hijos de .padre se acomodan con Flexbox.
+
+    .padre {
+        display: grid;
+    }
+
+Los hijos de .padre se acomodan con Grid.

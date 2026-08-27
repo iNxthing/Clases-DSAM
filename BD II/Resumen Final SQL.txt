@@ -1,0 +1,253 @@
+==============================================================================
+                    RESUMEN FINAL: SQL COMPLETO
+==============================================================================
+
+
+==============================================================================
+1. JOINs
+==============================================================================
+
+UNE TABLAS relacionadas.
+
+TIPOS:
+    INNER JOIN  → Solo muestra filas que existen en AMBAS tablas
+    LEFT JOIN   → Muestra TODO de la izquierda, NULL si no hay derecha
+    RIGHT JOIN  → Muestra TODO de la derecha, NULL si no hay izquierda
+
+EJEMPLO:
+    select m.nombre, e.nombre_especialidad
+    from medicos m
+    left join especialidades e on m.id_especialidad = e.id_especialidad;
+
+    Resultado:
+    - Doctores CON especialidad → aparece el nombre
+    - Doctores SIN especialidad → aparece NULL
+
+
+==============================================================================
+2. WHERE
+==============================================================================
+
+FILTRA filas ANTES de agrupar.
+
+EJEMPLO:
+    where estado = 'Atendida'
+
+    Resultado: Solo quedan filas donde estado = 'Atendida'
+
+
+==============================================================================
+3. GROUP BY
+==============================================================================
+
+AGRUPA filas por un criterio para hacer cálculos.
+
+EJEMPLO:
+    select vendedor, sum(monto)
+    from ventas
+    group by vendedor;
+
+    Resultado:
+    ┌────────────┬──────────┐
+    │ vendedor   │ SUM      │
+    ├────────────┼──────────┤
+    │ Juan       │ 300000   │
+    │ Maria      │ 200000   │
+    └────────────┴──────────┘
+
+NOTA: Sin GROUP BY no puedes usar SUM, COUNT, AVG por columna.
+
+
+==============================================================================
+4. HAVING
+==============================================================================
+
+FILTRA grupos DESPUÉS de agrupar. Es como WHERE pero para grupos.
+
+DIFERENCIA:
+    WHERE  → filtra filas ANTES de agrupar
+    HAVING → filtra grupos DESPUÉS de agrupar
+
+EJEMPLO:
+    group by vendedor
+    having sum(monto) > 500000
+
+    Resultado: Solo quedan vendedores cuya suma supera 500000
+
+NOTA: No puedes usar WHERE con COUNT, SUM, AVG. Siempre HAVING.
+
+
+==============================================================================
+5. CASE WHEN
+==============================================================================
+
+Es como un IF-ELSE dentro del query.
+
+SINTAXIS:
+    case when condicion then valor_si_verdadero else valor_si_falso end
+
+EJEMPLO:
+    sum(case when estado = 'Atendida' then 1 else 0 end)
+
+    Funciona así:
+    Fila 1: estado = 'Atendida'  → then 1
+    Fila 2: estado = 'Cancelada' → else 0
+    Fila 3: estado = 'Atendida'  → then 1
+
+    SUM(1 + 0 + 1) = 2
+
+
+==============================================================================
+6. COUNT vs DISTINCT
+==============================================================================
+
+COUNT:
+    count(*)           → Cuenta TODAS las filas
+    count(columna)     → Cuenta filas con valor (no cuenta NULL)
+
+DISTINCT:
+    distinct           → Elimina filas duplicadas
+
+COMBINACIÓN:
+    count(distinct columna) → Cuenta valores ÚNICOS
+
+EJEMPLO:
+    select count(vendedor) from ventas;
+    Resultado: 6 (cuenta todas las filas)
+
+    select count(distinct vendedor) from ventas;
+    Resultado: 3 (cuenta vendedores únicos)
+
+
+==============================================================================
+7. GROUP BY vs DISTINCT
+==============================================================================
+
+GROUP BY:
+    - Agrupa para hacer cálculos (SUM, COUNT, AVG)
+    - Muestra cada grupo una sola vez
+    - Permite operaciones matemáticas
+
+DISTINCT:
+    - Solo elimina duplicados
+    - NO permite cálculos por grupo
+    - Muestra valores únicos
+
+CUÁNDO USAR CADA UNO:
+    GROUP BY  → Cuando necesitas contar, sumar, promediar
+    DISTINCT  → Cuando solo quieres ver valores únicos
+
+
+==============================================================================
+8. ORDER BY
+==============================================================================
+
+ORDENA los resultados.
+
+SINTAXIS:
+    order by columna asc   -- de menor a mayor (por defecto)
+    order by columna desc  -- de mayor a menor
+
+EJEMPLO:
+    order by sum(monto) desc
+
+    Resultado: Ordena de mayor a menor
+
+
+==============================================================================
+9. AVG()
+==============================================================================
+
+Calcula el PROMEDIO de una columna numérica.
+
+EJEMPLO:
+    avg(duracion_dias)
+
+    Si tienes valores 30, 60, 15:
+    AVG = (30 + 60 + 15) / 3 = 35
+
+
+==============================================================================
+10. ORDER DE EJECUCIÓN SQL
+==============================================================================
+
+    1. FROM      → De dónde saco los datos
+    2. JOIN      → Une tablas relacionadas
+    3. WHERE     → Filtra filas (ANTES de agrupar)
+    4. GROUP BY  → Agrupa por criterio
+    5. HAVING    → Filtra grupos (DESPUÉS de agrupar)
+    6. SELECT    → Selecciono columnas
+    7. ORDER BY  → Ordeno el resultado
+
+
+==============================================================================
+11. EJERCICIO COMPLETO (WHERE + GROUP BY + CASE WHEN + HAVING)
+==============================================================================
+
+Tabla de alumnos:
+
+┌────┬──────────┬───────────┬──────────┬────────┬──────────┐
+│ id │ alumno   │ materia   │ nota     │ ciclo  │ estado   │
+├────┼──────────┼───────────┼──────────┼────────┼──────────┤
+│ 1  │ Pedro    │ Matematica│ 85       │ 2024-1 │ Aprobado │
+│ 2  │ Pedro    │ Ingles    │ 70       │ 2024-1 │ Aprobado │
+│ 3  │ Pedro    │ Historia  │ 90       │ 2024-1 │ Aprobado │
+│ 4  │ Maria    │ Matematica│ 95       │ 2024-1 │ Aprobado │
+│ 5  │ Maria    │ Ingles    │ 60       │ 2024-1 │ Aprobado │
+│ 6  │ Ana      │ Historia  │ 40       │ 2024-1 │ Reprobado│
+│ 7  │ Ana      │ Matematica│ 50       │ 2024-1 │ Reprobado│
+│ 8  │ Luis     │ Ingles    │ 75       │ 2024-2 │ Aprobado │
+│ 9  │ Luis     │ Matematica│ 80       │ 2024-2 │ Aprobado │
+│ 10 │ Carlos   │ Historia  │ 30       │ 2024-2 │ Reprobado│
+│ 11 │ Carlos   │ Ingles    │ 45       │ 2024-2 │ Reprobado│
+└────┴──────────┴───────────┴──────────┴────────┴──────────┘
+
+EJERCICIO: Mostrar por alumno cuántas materias aprobó y cuántas
+reprobó, pero solo del ciclo 2024-1, y que tengan más de 2
+materias aprobadas.
+
+QUERY:
+
+    select alumno,
+        sum(case when estado = 'Aprobado' then 1 else 0 end) 'Aprobadas',
+        sum(case when estado = 'Reprobado' then 1 else 0 end) 'Reprobadas'
+    from alumnos
+    where ciclo = '2024-1'
+    group by alumno
+    having sum(case when estado = 'Aprobado' then 1 else 0 end) > 2;
+
+RESULTADO:
+
+┌──────────┬───────────┬────────────┐
+│ alumno   │ Aprobadas │ Reprobadas │
+├──────────┼───────────┼────────────┤
+│ Pedro    │ 3         │ 0          │
+└──────────┴───────────┴────────────┘
+
+EXPLICACIÓN:
+    WHERE     → Filtra solo ciclo 2024-1
+    GROUP BY  → Agrupa por alumno
+    CASE WHEN → Cuenta aprobadas y reprobadas
+    HAVING    → Filtra solo los que tienen más de 2 aprobadas
+
+
+==============================================================================
+12. RESUMEN RÁPIDO
+==============================================================================
+
+┌─────────────────┬────────────────────────────────────────┐
+│ COMANDO         │ QUÉ HACE                               │
+├─────────────────┼────────────────────────────────────────┤
+│ INNER JOIN      │ Une tablas (solo coincidencias)        │
+│ LEFT JOIN       │ Todo de la izquierda, NULL si no hay   │
+│ RIGHT JOIN      │ Todo de la derecha, NULL si no hay     │
+│ WHERE           │ Filtra filas (ANTES de agrupar)        │
+│ GROUP BY        │ Agrupa para cálculos                   │
+│ HAVING          │ Filtra grupos (DESPUÉS de agrupar)     │
+│ CASE WHEN       │ IF-ELSE dentro del query               │
+│ COUNT           │ Cuenta filas                           │
+│ COUNT(DISTINCT) │ Cuenta valores únicos                  │
+│ SUM             │ Suma valores                           │
+│ AVG             │ Promedio                               │
+│ ORDER BY        │ Ordena resultados                      │
+└─────────────────┴────────────────────────────────────────┘

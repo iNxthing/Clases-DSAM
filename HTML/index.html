@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBVA | Pagina Responsive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+        Header principal:
+        contiene la identidad de la pagina y la navegacion.
+        En escritorio el menu se ve horizontal; en movil se controla desde el boton hamburguesa.
+    -->
+    <header class="site-header">
+        <a class="logo-header" href="#inicio">BBVA</a>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="navegacion" id="menu" aria-label="Navegacion principal">
+            <a class="item-menu" href="#inicio">Inicio</a>
+            <a class="item-menu" href="#productos">Productos</a>
+            <a class="item-menu" href="#servicios">Servicios</a>
+            <a class="item-menu" href="#galeria">Galeria</a>
+            <a class="item-menu btn-menu" href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="container" id="inicio">
+        <!--
+            Hero o bloque de bienvenida:
+            combina un texto fuerte con el slider. Es lo primero que ve el usuario,
+            por eso tiene el llamado a la accion principal.
+        -->
+        <section class="hero">
+            <div class="hero-texto">
+                <p class="etiqueta">Experiencia digital</p>
+                <h1>Una pagina moderna, responsive y lista para personalizar.</h1>
+                <p>Incluye header, menu movil, slider con botones, cards, mosaico de imagenes y footer.</p>
+                <a class="btn-principal" href="#productos">Ver productos</a>
+            </div>
+
+            <!--
+                Slider:
+                la imagen visible se cambia desde JavaScript usando el id sliderImage.
+                Los botones laterales llaman al cambio anterior/siguiente.
+            -->
+            <div class="slider" aria-label="Banner de imagenes">
+                <button class="slider-btn prev" id="prevSlide" type="button" aria-label="Imagen anterior">&#10094;</button>
+                <img id="sliderImage" src="wp13674951-tv-girl-pc-wallpapers.jpg" alt="Imagen destacada del banner">
+                <button class="slider-btn next" id="nextSlide" type="button" aria-label="Imagen siguiente">&#10095;</button>
+            </div>
+        </section>
+
+        <!--
+            Cards de productos:
+            estan separadas en articulos para que cada tarjeta sea independiente
+            y puedas duplicar, quitar o cambiar contenido facilmente.
+        -->
+        <section class="cards" id="productos" aria-label="Productos destacados">
+            <article class="card">
+                <h2>Cuenta digital</h2>
+                <p>Administra tus movimientos desde cualquier dispositivo con una interfaz clara y segura.</p>
+                <button type="button">Conocer mas</button>
+            </article>
+
+            <article class="card destacada">
+                <h2>Tarjeta premium</h2>
+                <p>Beneficios exclusivos, control inmediato y herramientas para organizar tus compras.</p>
+                <button type="button">Solicitar ahora</button>
+            </article>
+
+            <article class="card">
+                <h2>Inversion simple</h2>
+                <p>Opciones flexibles para empezar a construir tus metas con acompanamiento digital.</p>
+                <button type="button">Empezar</button>
+            </article>
+        </section>
+
+        <!--
+            Servicios:
+            este bloque resume caracteristicas de forma corta. En escritorio usa dos columnas;
+            en pantallas pequenas pasa a una sola columna para mejorar la lectura.
+        -->
+        <section class="servicios" id="servicios">
+            <div>
+                <p class="etiqueta">Servicios</p>
+                <h2>Soluciones pensadas para cada necesidad</h2>
+            </div>
+
+            <div class="servicios-grid">
+                <article>
+                    <h3>Pagos rapidos</h3>
+                    <p>Realiza pagos y transferencias sin complicaciones.</p>
+                </article>
+
+                <article>
+                    <h3>Control total</h3>
+                    <p>Consulta saldos, movimientos y alertas en tiempo real.</p>
+                </article>
+
+                <article>
+                    <h3>Soporte 24/7</h3>
+                    <p>Recibe ayuda cuando la necesites desde canales digitales.</p>
+                </article>
+            </div>
+        </section>
+
+        <!--
+            Galeria tipo mosaico:
+            usa CSS Grid para variar tamanos de algunas imagenes.
+            Puedes reemplazar los src remotos por archivos locales cuando agregues tus imagenes.
+        -->
+        <section class="galeria" id="galeria">
+            <div class="section-title">
+                <p class="etiqueta">Galeria</p>
+                <h2>Mosaico de imagenes</h2>
+            </div>
+
+            <div class="mosaico">
+                <img src="wp13674951-tv-girl-pc-wallpapers.jpg" alt="Imagen del mosaico 1">
+                <img src="https://picsum.photos/500/500?random=1" alt="Imagen del mosaico 2">
+                <img src="https://picsum.photos/500/700?random=2" alt="Imagen del mosaico 3">
+                <img src="https://picsum.photos/700/500?random=3" alt="Imagen del mosaico 4">
+                <img src="https://picsum.photos/500/500?random=4" alt="Imagen del mosaico 5">
+                <img src="https://picsum.photos/500/700?random=5" alt="Imagen del mosaico 6">
+                <img src="https://picsum.photos/700/500?random=6" alt="Imagen del mosaico 7">
+                <img src="https://picsum.photos/500/500?random=7" alt="Imagen del mosaico 8">
+                <img src="https://picsum.photos/500/700?random=8" alt="Imagen del mosaico 9">
+                <img src="https://picsum.photos/700/500?random=9" alt="Imagen del mosaico 10">
+                <img src="https://picsum.photos/500/500?random=10" alt="Imagen del mosaico 11">
+                <img src="https://picsum.photos/700/500?random=11" alt="Imagen del mosaico 12">
+            </div>
+        </section>
+    </main>
+
+    <!--
+        Footer:
+        cierra la pagina con informacion corta y enlaces de regreso a secciones importantes.
+    -->
+    <footer class="footer" id="contacto">
+        <div>
+            <h2>BBVA</h2>
+            <p>Maqueta web responsive creada con HTML, CSS y JavaScript.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#galeria">Galeria</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

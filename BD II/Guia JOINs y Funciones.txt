@@ -1,0 +1,185 @@
+==============================================================================
+                    GUÍA VISUAL: JOINs Y FUNCIONES SQL
+==============================================================================
+
+
+==============================================================================
+1. WHERE
+==============================================================================
+
+Filtra filas ANTES de agrupar.
+
+Ejemplo:
+    where estado = 'Atendida'
+
+Resultado:
+    Solo quedan las filas donde estado = 'Atendida'
+    Las demás se eliminan.
+
+
+==============================================================================
+2. GROUP BY
+==============================================================================
+
+Agrupa filas por un criterio.
+
+Ejemplo:
+    group by vendedor
+
+Resultado:
+    ┌────────────┬────────────┐
+    │ vendedor   │ SUM(monto) │
+    ├────────────┼────────────┤
+    │ Juan       │ 1305000    │
+    │ Maria      │ 1650000    │
+    │ Pedro      │ 130000     │
+    └────────────┴────────────┘
+
+Sin GROUP BY, no sabes en qué canasta poner los datos.
+
+
+==============================================================================
+3. CASE WHEN
+==============================================================================
+
+Es como un if-else dentro del query.
+
+Sintaxis:
+    case when condicion then valor_si_verdadero else valor_si_falso end
+
+Ejemplo:
+    sum(case when tipo_pago = 'Efectivo' then monto else 0 end)
+
+Cómo funciona paso a paso:
+    Fila 1: tipo_pago = 'Efectivo' → then 1200000
+    Fila 2: tipo_pago = 'Credito'  → else 0
+    Fila 3: tipo_pago = 'Credito'  → else 0
+
+    SUM(1200000 + 0 + 0) = 1200000
+
+
+==============================================================================
+4. HAVING
+==============================================================================
+
+Filtra DESPUÉS de agrupar. Es como un WHERE pero para grupos.
+
+La diferencia clave:
+    WHERE:  Filtra filas ANTES de agrupar
+    HAVING: Filtra grupos DESPUÉS de agrupar
+
+    WHERE:  No puede usar COUNT, SUM, AVG
+    HAVING: Sí puede usar COUNT, SUM, AVG
+
+Ejemplo:
+    group by vendedor
+    having sum(monto) > 500000
+
+Resultado:
+    Solo quedan los vendedores cuya suma supera 500000
+
+
+==============================================================================
+5. COUNT(DISTINCT columna)
+==============================================================================
+
+Cuenta valores únicos, sin repetir.
+
+Ejemplo:
+    count(distinct c.id_paciente)
+
+Si un paciente tiene 3 citas:
+    Sin DISTINCT: cuenta 3
+    Con DISTINCT: cuenta 1 (ese paciente una sola vez)
+
+
+==============================================================================
+6. AVG()
+==============================================================================
+
+Calcula el promedio de una columna numérica.
+
+Ejemplo:
+    avg(duracion_dias)
+
+Si tienes tratamientos de 30, 60, 15 días:
+    AVG(30 + 60 + 15) / 3 = 35 días promedio
+
+
+==============================================================================
+7. ORDER BY
+==============================================================================
+
+Ordena los resultados.
+
+    order by columna asc   -- de menor a mayor (por defecto)
+    order by columna desc  -- de mayor a menor
+
+Ejemplo:
+    order by sum(monto) desc
+
+Esto ordena de mayor a menor gasto.
+
+
+==============================================================================
+8. ORDEN DE EJECUCIÓN
+==============================================================================
+
+    1. FROM      -- De dónde
+    2. JOIN      -- Unir tablas
+    3. WHERE     -- Filtrar filas
+    4. GROUP BY  -- Agrupar
+    5. HAVING    -- Filtrar grupos
+    6. SELECT    -- Seleccionar columnas
+    7. ORDER BY  -- Ordenar
+
+
+==============================================================================
+EJERCICIO PRÁCTICO
+==============================================================================
+
+Tabla de alumnos:
+
+┌────┬──────────┬───────────┬──────────┬────────┬──────────┐
+│ id │ alumno   │ materia   │ nota     │ ciclo  │ estado   │
+├────┼──────────┼───────────┼──────────┼────────┼──────────┤
+│ 1  │ Pedro    │ Matematica│ 85       │ 2024-1 │ Aprobado │
+│ 2  │ Pedro    │ Ingles    │ 70       │ 2024-1 │ Aprobado │
+│ 3  │ Pedro    │ Historia  │ 90       │ 2024-1 │ Aprobado │
+│ 4  │ Maria    │ Matematica│ 95       │ 2024-1 │ Aprobado │
+│ 5  │ Maria    │ Ingles    │ 60       │ 2024-1 │ Aprobado │
+│ 6  │ Ana      │ Historia  │ 40       │ 2024-1 │ Reprobado│
+│ 7  │ Ana      │ Matematica│ 50       │ 2024-1 │ Reprobado│
+│ 8  │ Luis     │ Ingles    │ 75       │ 2024-2 │ Aprobado │
+│ 9  │ Luis     │ Matematica│ 80       │ 2024-2 │ Aprobado │
+│ 10 │ Carlos   │ Historia  │ 30       │ 2024-2 │ Reprobado│
+│ 11 │ Carlos   │ Ingles    │ 45       │ 2024-2 │ Reprobado│
+└────┴──────────┴───────────┴──────────┴────────┴──────────┘
+
+Ejercicio: Mostrar por alumno cuántas materias aprobó y cuántas
+reprobó, pero solo del ciclo 2024-1, y que tengan más de 2
+materias aprobadas.
+
+Query:
+
+    select alumno,
+        sum(case when estado = 'Aprobado' then 1 else 0 end) 'Materias Aprobadas',
+        sum(case when estado = 'Reprobado' then 1 else 0 end) 'Materias Reprobadas'
+    from alumnos
+    where ciclo = '2024-1'
+    group by alumno
+    having sum(case when estado = 'Aprobado' then 1 else 0 end) > 2;
+
+Resultado:
+
+┌──────────┬─────────────────┬──────────────────┐
+│ alumno   │ Materias Aprob. │ Materias Reprob. │
+├──────────┼─────────────────┼──────────────────┤
+│ Pedro    │ 3               │ 0                │
+└──────────┴─────────────────┴──────────────────┘
+
+Explicación:
+    WHERE:     Filtra solo ciclo 2024-1
+    GROUP BY:  Agrupa por alumno
+    CASE WHEN: Cuenta aprobadas y reprobadas
+    HAVING:    Filtra solo los que tienen más de 2 aprobadas

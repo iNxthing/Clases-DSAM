@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .semaforo {
+            width: 300px;
+            height: 600px;
+            background-color: black;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .luces {
+            background-color: gray;
+            border-radius: 9999px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .rojo {
+            background-color: red;
+            border-radius: 9999px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .amarillo {
+            background-color: yellow;
+            border-radius: 9999px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .verde {
+            background-color: green;
+            border-radius: 9999px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="semaforo">
+        <div id="primera" class="luces primera"></div>
+        <div id="segunda" class="luces segunda"></div>
+        <div id="tercera" class="luces tercera"></div>
+    </div>
+
+    <button onclick="verde()">VERDE</button>
+    <button onclick="rojo()">ROJO</button>
+    <button onclick="amarillo()">AMARILLO</button>
+
+    <script>
+        function verde() {
+            const primera = document.getElementById("primera");
+            const segunda = document.getElementById("segunda");
+            const tercera = document.getElementById("tercera");
+
+            primera.className = "luces";
+            segunda.className = "luces";
+            tercera.className = "verde";
+        }
+
+        function rojo() {
+            const primera = document.getElementById("primera");
+            const segunda = document.getElementById("segunda");
+            const tercera = document.getElementById("tercera");
+
+            primera.className = "rojo";
+            segunda.className = "luces";
+            tercera.className = "luces";
+        }
+
+        function amarillo() {
+            const primera = document.getElementById("primera");
+            const segunda = document.getElementById("segunda");
+            const tercera = document.getElementById("tercera");
+
+            primera.className = "luces";
+            segunda.className = "amarillo";
+            tercera.className = "luces";
+        }
+
+
+        rojo();
+
+        setTimeout(() => {
+            amarillo();
+        }, 5000);
+
+        setTimeout(() => {
+            verde();
+        }, 8000);
+
+    </script>
+</body>
+
+</html>
