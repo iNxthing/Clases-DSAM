@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/bin/Debug/net10.0/ElAhorcado
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/bin/Debug/net10.0/ElAhorcado.deps.json
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/bin/Debug/net10.0/ElAhorcado.runtimeconfig.json
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/bin/Debug/net10.0/ElAhorcado.dll
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/bin/Debug/net10.0/ElAhorcado.pdb
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.AssemblyInfo.cs
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.sourcelink.json
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.dll
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/refint/ElAhorcado.dll
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.pdb
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ElAhorcado.genruntimeconfig.cache
+/home/darwin/RiderProjects/ElAhorcado/ElAhorcado/obj/Debug/net10.0/ref/ElAhorcado.dll

@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/bin/Debug/net10.0/CopaLibertadores
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/bin/Debug/net10.0/CopaLibertadores.deps.json
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/bin/Debug/net10.0/CopaLibertadores.runtimeconfig.json
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/bin/Debug/net10.0/CopaLibertadores.dll
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/bin/Debug/net10.0/CopaLibertadores.pdb
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.AssemblyInfo.cs
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.sourcelink.json
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.dll
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/refint/CopaLibertadores.dll
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.pdb
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/CopaLibertadores.genruntimeconfig.cache
+/home/darwin/RiderProjects/CopaLibertadores/CopaLibertadores/obj/Debug/net10.0/ref/CopaLibertadores.dll

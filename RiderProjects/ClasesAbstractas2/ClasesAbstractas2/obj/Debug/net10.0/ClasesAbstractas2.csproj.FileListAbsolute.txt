@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/bin/Debug/net10.0/ClasesAbstractas2
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/bin/Debug/net10.0/ClasesAbstractas2.deps.json
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/bin/Debug/net10.0/ClasesAbstractas2.runtimeconfig.json
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/bin/Debug/net10.0/ClasesAbstractas2.dll
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/bin/Debug/net10.0/ClasesAbstractas2.pdb
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.AssemblyInfo.cs
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.sourcelink.json
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.dll
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/refint/ClasesAbstractas2.dll
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.pdb
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ClasesAbstractas2.genruntimeconfig.cache
+/home/darwin/RiderProjects/ClasesAbstractas2/ClasesAbstractas2/obj/Debug/net10.0/ref/ClasesAbstractas2.dll

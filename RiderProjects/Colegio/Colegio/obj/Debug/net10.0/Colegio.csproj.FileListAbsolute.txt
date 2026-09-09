@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/Colegio/Colegio/bin/Debug/net10.0/Colegio
+/home/darwin/RiderProjects/Colegio/Colegio/bin/Debug/net10.0/Colegio.deps.json
+/home/darwin/RiderProjects/Colegio/Colegio/bin/Debug/net10.0/Colegio.runtimeconfig.json
+/home/darwin/RiderProjects/Colegio/Colegio/bin/Debug/net10.0/Colegio.dll
+/home/darwin/RiderProjects/Colegio/Colegio/bin/Debug/net10.0/Colegio.pdb
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.AssemblyInfo.cs
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.sourcelink.json
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.dll
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/refint/Colegio.dll
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.pdb
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/Colegio.genruntimeconfig.cache
+/home/darwin/RiderProjects/Colegio/Colegio/obj/Debug/net10.0/ref/Colegio.dll

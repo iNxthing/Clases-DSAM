@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.AssemblyInfo.cs
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.sourcelink.json
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/bin/Debug/net10.0/IngresoEstudiantes
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/bin/Debug/net10.0/IngresoEstudiantes.deps.json
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/bin/Debug/net10.0/IngresoEstudiantes.runtimeconfig.json
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/bin/Debug/net10.0/IngresoEstudiantes.dll
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/bin/Debug/net10.0/IngresoEstudiantes.pdb
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.dll
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/refint/IngresoEstudiantes.dll
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.pdb
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/IngresoEstudiantes.genruntimeconfig.cache
+/home/darwin/RiderProjects/IngresoEstudiantes/IngresoEstudiantes/obj/Debug/net10.0/ref/IngresoEstudiantes.dll

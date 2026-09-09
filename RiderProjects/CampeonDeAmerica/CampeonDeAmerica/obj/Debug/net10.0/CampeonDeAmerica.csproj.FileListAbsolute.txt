@@ -1,0 +1,15 @@
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/bin/Debug/net10.0/CampeonDeAmerica
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/bin/Debug/net10.0/CampeonDeAmerica.deps.json
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/bin/Debug/net10.0/CampeonDeAmerica.runtimeconfig.json
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/bin/Debug/net10.0/CampeonDeAmerica.dll
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/bin/Debug/net10.0/CampeonDeAmerica.pdb
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.GeneratedMSBuildEditorConfig.editorconfig
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.AssemblyInfoInputs.cache
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.AssemblyInfo.cs
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.csproj.CoreCompileInputs.cache
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.sourcelink.json
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.dll
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/refint/CampeonDeAmerica.dll
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.pdb
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/CampeonDeAmerica.genruntimeconfig.cache
+/home/darwin/RiderProjects/CampeonDeAmerica/CampeonDeAmerica/obj/Debug/net10.0/ref/CampeonDeAmerica.dll
