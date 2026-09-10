@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z2WfF4DFZtw=",
+  "success": true,
+  "projectFilePath": "/home/darwin/RiderProjects/api/api/api.csproj",
+  "expectedPackageFiles": [
+    "/home/darwin/.nuget/packages/microsoft.netcore.platforms/1.1.1/microsoft.netcore.platforms.1.1.1.nupkg.sha512",
+    "/home/darwin/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "/home/darwin/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
+    "/home/darwin/.nuget/packages/runtime.native.system/4.3.0/runtime.native.system.4.3.0.nupkg.sha512",
+    "/home/darwin/.nuget/packages/runtime.native.system.net.http/4.3.0/runtime.native.system.net.http.4.3.0.nupkg.sha512",
+    "/home/darwin/.nuget/packages/runtime.native.system.security.cryptography.openssl/4.3.2/runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+    "/home/darwin/.nuget/packages/system.net.http/4.3.4/system.net.http.4.3.4.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Net.Http will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "projectPath": "/home/darwin/RiderProjects/api/api/api.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/darwin/RiderProjects/api/api/api.csproj",
+      "libraryId": "System.Net.Http",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
