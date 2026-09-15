@@ -30,7 +30,8 @@ class Curso:
     def mostrar_info(self):
         return f"Curso: {self.nombre} --Profesor: {self.profesor} --Cupos{self.cupos}"
     
-p1 = Profesor.presentacion()
+p1 = Profesor("Nothing", 20, "POO")
+print(p1.presentacion())
 # class Animal:
 #     def comer(self):
 #         print("El animal esta comiendo")
