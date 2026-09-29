@@ -4,6 +4,7 @@
  */
 package sistemadegestionacademica;
 import InformeEstudiantesPorGrado.IFrmEstudiantesPorGrado;
+import InformeCalificaciones.IframeCalificaciones;
 
 /**
  *
@@ -45,7 +46,8 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuEstudiantesPorGrado = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuCalificaciones = new javax.swing.JMenuItem();
+        menuCerrarSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuAdministrar = new javax.swing.JMenuItem();
 
@@ -68,9 +70,13 @@ public class FrmMain extends javax.swing.JFrame {
         menuEstudiantesPorGrado.addActionListener(this::menuEstudiantesPorGradoActionPerformed);
         jMenu1.add(menuEstudiantesPorGrado);
 
-        jMenuItem2.setText("Cerrar Sesion");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        jMenu1.add(jMenuItem2);
+        menuCalificaciones.setText("Calificaciones");
+        menuCalificaciones.addActionListener(this::menuCalificacionesActionPerformed);
+        jMenu1.add(menuCalificaciones);
+
+        menuCerrarSesion.setText("Cerrar Sesion");
+        menuCerrarSesion.addActionListener(this::menuCerrarSesionActionPerformed);
+        jMenu1.add(menuCerrarSesion);
 
         jMenuBar1.add(jMenu1);
 
@@ -121,12 +127,19 @@ public class FrmMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menuAdministrarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCerrarSesionActionPerformed
         // TODO add your handling code here:
         FrmLogin login = new FrmLogin();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuCerrarSesionActionPerformed
+
+    private void menuCalificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCalificacionesActionPerformed
+        // TODO add your handling code here:
+        IframeCalificaciones calificaciones = new IframeCalificaciones();
+        desktopMain.add(calificaciones);
+        calificaciones.show();
+    }//GEN-LAST:event_menuCalificacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +171,9 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuAdministrar;
+    private javax.swing.JMenuItem menuCalificaciones;
+    private javax.swing.JMenuItem menuCerrarSesion;
     private javax.swing.JMenuItem menuEstudiantesPorGrado;
     // End of variables declaration//GEN-END:variables
 }

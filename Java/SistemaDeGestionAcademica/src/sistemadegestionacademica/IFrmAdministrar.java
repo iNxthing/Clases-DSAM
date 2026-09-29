@@ -22,16 +22,11 @@ public class IFrmAdministrar extends javax.swing.JInternalFrame {
      */
     
     DefaultTableModel modeloTabla;
-    private final List<String> asignaturas = new ArrayList();
     public IFrmAdministrar() {
         initComponents();
         String [] encabezado = {"Estudiante","Grado","Asignatura","periodo","Nota"};
         modeloTabla = new DefaultTableModel(encabezado,0);
         jTable1.setModel(modeloTabla);
-        asignaturas.add("Matematicas");
-        asignaturas.add("Ciencias");
-        asignaturas.add("Ingles");
-        asignaturas.add("Tecnologia");
         txtNombreEstudiante.setText("");
         txtValor.setText("");
         llenarCombo();
@@ -249,13 +244,14 @@ public class IFrmAdministrar extends javax.swing.JInternalFrame {
             return;
         }
         
-         
-        
-        Estudiante e = Grado.crearEstudiante(nombre, grado);
-        
-        e.agregarNota(asignatura, periodo, valor);
+        Estudiante e = Grado.buscarPorNombre(nombre);
+        if (e == null) {
+            e = Grado.crearEstudiante(nombre, grado);
+        }
+
+        e.agregarNota(asignatura, periodo, valor);            
         JOptionPane.showMessageDialog(this, "Nota Agregada");
-        
+
         modeloTabla.addRow(new Object[]{nombre,grado,asignatura,periodo,valor});
     }
     
@@ -269,7 +265,7 @@ public class IFrmAdministrar extends javax.swing.JInternalFrame {
         comboAsignaturas.removeAllItems();
         comboAsignaturas.addItem("Seleccione...");
         
-        for (String a : asignaturas) {
+        for (String a : Grado.asignaturas) {
             comboAsignaturas.addItem(a);
         }
         

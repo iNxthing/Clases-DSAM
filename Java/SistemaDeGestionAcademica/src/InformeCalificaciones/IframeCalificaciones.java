@@ -4,7 +4,12 @@
  */
 package InformeCalificaciones;
 
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sistemadegestionacademica.Estudiante;
+import sistemadegestionacademica.Notas;
+import sistemadegestionacademica.Grado;
 
 /**
  *
@@ -18,6 +23,7 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
     DefaultTableModel modeloTabla;
     public IframeCalificaciones() {
         initComponents();
+        llenarCombos();
         String [] encabezado = {"Estudiante","Asignatura","periodo","Nota"};
         modeloTabla = new DefaultTableModel(encabezado,0);
         jTable1.setModel(modeloTabla);
@@ -32,13 +38,18 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        periodo = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         comboEstudiante = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbtnPeriodo1 = new javax.swing.JRadioButton();
+        rbtnPeriodo2 = new javax.swing.JRadioButton();
+        rbtnPeriodo3 = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        comboAsignatura = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        btnMostrar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -59,11 +70,23 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jRadioButton1.setText("jRadioButton1");
+        periodo.add(rbtnPeriodo1);
+        rbtnPeriodo1.setText("Periodo 1");
 
-        jRadioButton2.setText("jRadioButton2");
+        periodo.add(rbtnPeriodo2);
+        rbtnPeriodo2.setText("Periodo 2");
 
-        jRadioButton3.setText("jRadioButton3");
+        periodo.add(rbtnPeriodo3);
+        rbtnPeriodo3.setText("Periodo 3");
+
+        jLabel2.setText("Seleccione la asignatura");
+
+        comboAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Periodo");
+
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(this::btnMostrarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,9 +97,13 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(comboEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rbtnPeriodo1)
+                    .addComponent(rbtnPeriodo2)
+                    .addComponent(rbtnPeriodo3)
+                    .addComponent(jLabel2)
+                    .addComponent(comboAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(btnMostrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -88,12 +115,20 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(jRadioButton1)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(comboAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnPeriodo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rbtnPeriodo2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtnPeriodo3)
+                .addGap(18, 18, 18)
+                .addComponent(btnMostrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -104,14 +139,80 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+            // 1. LEER
+        String periodo = null;
+        if (rbtnPeriodo1.isSelected()) {
+            periodo = "Periodo 1";
+        } else if (rbtnPeriodo2.isSelected()) {
+            periodo = "Periodo 2";
+        } else if (rbtnPeriodo3.isSelected()) {
+            periodo = "Periodo 3";
+        }
+
+        // 2. VALIDAR
+        if (comboEstudiante.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un estudiante");
+            return;
+        }
+        if (comboAsignatura.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione una asignatura");
+            return;
+        }
+        if (periodo == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione un periodo");
+            return;
+        }
+
+        String nombre = String.valueOf(comboEstudiante.getSelectedItem());
+        String asignatura = String.valueOf(comboAsignatura.getSelectedItem());
+
+        // 3. FILTRAR
+        Estudiante e = Grado.buscarPorNombre(nombre);
+        List<Notas> lista = e.filtrarNotas(asignatura, periodo);
+
+        // 4. MOSTRAR
+        modeloTabla.setRowCount(0);
+        for (Notas n : lista) {
+            modeloTabla.addRow(new Object[]{
+                e.getNombreEstudiante(), n.getAsignatura(), n.getPeriodo(), n.getValor()
+            });
+        }
+        if (lista.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sin calificaciones para esa selección");
+        }
+    }//GEN-LAST:event_btnMostrarActionPerformed
+    
+    
+    private void llenarCombos(){
+        comboEstudiante.removeAllItems();
+        comboEstudiante.addItem("Seleccione...");
+        for (Estudiante e : Grado.obtenerEstudiantes()) {
+            comboEstudiante.addItem(e.getNombreEstudiante());
+        }
+
+        comboAsignatura.removeAllItems();
+        comboAsignatura.addItem("Seleccione...");
+        for (String a : Grado.asignaturas) {
+            comboAsignatura.addItem(a);
+        }
+          
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrar;
+    private javax.swing.JComboBox<String> comboAsignatura;
     private javax.swing.JComboBox<String> comboEstudiante;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.ButtonGroup periodo;
+    private javax.swing.JRadioButton rbtnPeriodo1;
+    private javax.swing.JRadioButton rbtnPeriodo2;
+    private javax.swing.JRadioButton rbtnPeriodo3;
     // End of variables declaration//GEN-END:variables
 }

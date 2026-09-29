@@ -52,15 +52,22 @@ public class Grado {
         return resultado;
     }
     
-    public static List<Estudiante> filtrarPorPeriodo(String asignatura,String periodo){
-        List<Estudiante> resultado = new ArrayList<>();
+    public static final List<String> asignaturas = new ArrayList<>();
+
+    static {
+        asignaturas.add("Matematicas");
+        asignaturas.add("Ciencias");
+        asignaturas.add("Ingles");
+        asignaturas.add("Tecnologia");
+    }
+    public static Estudiante buscarPorNombre(String nombre) {
         for (Estudiante e : obtenerEstudiantes()) {
-            if (e.getNotas().equals(asignatura) && e.getNotas().equals(periodo)) {
-                resultado.add(e);
+            if (e.getNombreEstudiante().equalsIgnoreCase(nombre)) {
+                return e;
             }
         }
-        return resultado;
-    }
+    return null;
+}
     
     public static List<Estudiante> filtrarBajoRendimiento(double limite){
         List<Estudiante> resultado = new ArrayList<>();

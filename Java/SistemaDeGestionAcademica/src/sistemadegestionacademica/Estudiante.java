@@ -66,5 +66,16 @@ public class Estudiante {
         return calcularPromedio() >=notaMinima;
     }
     
+    public List<Notas> filtrarNotas(String asignatura, String periodo) {
+    List<Notas> resultado = new ArrayList<>();
+    for (Notas n : notas) {                       // abro la carpeta, hoja por hoja
+        if (n.getAsignatura().equals(asignatura)
+                && n.getPeriodo().equals(periodo)) {
+            resultado.add(n);                     // esta hoja cumple los dos filtros
+        }
+    }
+    return resultado;
+}
+    
     
 }
