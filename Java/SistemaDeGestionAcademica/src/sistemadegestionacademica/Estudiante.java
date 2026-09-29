@@ -68,10 +68,10 @@ public class Estudiante {
     
     public List<Notas> filtrarNotas(String asignatura, String periodo) {
     List<Notas> resultado = new ArrayList<>();
-    for (Notas n : notas) {                       // abro la carpeta, hoja por hoja
+    for (Notas n : notas) {
         if (n.getAsignatura().equals(asignatura)
                 && n.getPeriodo().equals(periodo)) {
-            resultado.add(n);                     // esta hoja cumple los dos filtros
+            resultado.add(n);
         }
     }
     return resultado;
