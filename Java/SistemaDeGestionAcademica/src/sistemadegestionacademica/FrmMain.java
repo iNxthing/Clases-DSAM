@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistemadegestionacademica;
-import InformeRendimientoAcademico.FrmInformeRendimiento;
-import InformeEstudiantesPorGrado.FrmEstudiantesPorGrado;
+import InformeEstudiantesPorGrado.IFrmEstudiantesPorGrado;
+
 /**
  *
  * @author Usuario
@@ -23,7 +23,12 @@ public class FrmMain extends javax.swing.JFrame {
         this.profile = profile;
         this.user = user;
         initComponents();
-        lblUsuario.setText("Usuario: " + user);
+        
+        if(profile == 1){
+            menuAdministrar.setVisible(true);
+        }else{
+            menuAdministrar.setVisible(false);
+        }
         
     }
 
@@ -36,104 +41,92 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnCerrarSesion = new javax.swing.JButton();
-        btnEstudiantesPorGrado = new javax.swing.JButton();
-        btnInformeCalificaciones = new javax.swing.JButton();
-        btnInformeBajoRendimiento = new javax.swing.JButton();
-        btnInformeRendimiento = new javax.swing.JButton();
-        lblUsuario = new javax.swing.JLabel();
+        desktopMain = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menuEstudiantesPorGrado = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menuAdministrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Seccion Principal");
+        javax.swing.GroupLayout desktopMainLayout = new javax.swing.GroupLayout(desktopMain);
+        desktopMain.setLayout(desktopMainLayout);
+        desktopMainLayout.setHorizontalGroup(
+            desktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 675, Short.MAX_VALUE)
+        );
+        desktopMainLayout.setVerticalGroup(
+            desktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
 
-        btnCerrarSesion.setText("Cerrar Sesion");
-        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
+        jMenu1.setText("File");
 
-        btnEstudiantesPorGrado.setText("Informe de Estudiantes por grado");
-        btnEstudiantesPorGrado.addActionListener(this::btnEstudiantesPorGradoActionPerformed);
+        menuEstudiantesPorGrado.setText("EstudiantesPorGrado");
+        menuEstudiantesPorGrado.addActionListener(this::menuEstudiantesPorGradoActionPerformed);
+        jMenu1.add(menuEstudiantesPorGrado);
 
-        btnInformeCalificaciones.setText("Informe de Calificaciones");
+        jMenuItem2.setText("Cerrar Sesion");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
+        jMenu1.add(jMenuItem2);
 
-        btnInformeBajoRendimiento.setText("Informe de Estudiantes con bajo rendimiento");
+        jMenuBar1.add(jMenu1);
 
-        btnInformeRendimiento.setText("Informe de Rendimiento Academico");
-        btnInformeRendimiento.addActionListener(this::btnInformeRendimientoActionPerformed);
+        jMenu2.setText("Edit");
 
-        lblUsuario.setText("jLabel2");
+        menuAdministrar.setText("Administrar");
+        menuAdministrar.addActionListener(this::menuAdministrarActionPerformed);
+        jMenu2.add(menuAdministrar);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCerrarSesion)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEstudiantesPorGrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnInformeCalificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInformeBajoRendimiento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnInformeRendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblUsuario)
-                        .addGap(58, 58, 58))))
+            .addComponent(desktopMain)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblUsuario))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEstudiantesPorGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInformeCalificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInformeBajoRendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInformeRendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(btnCerrarSesion)
-                .addContainerGap())
+            .addComponent(desktopMain)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+    
+    
+    
+    private void menuEstudiantesPorGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstudiantesPorGradoActionPerformed
         // TODO add your handling code here:
-        FrmLogin newfreame = new FrmLogin();
-        newfreame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+        IFrmEstudiantesPorGrado InformePorGrado = new IFrmEstudiantesPorGrado();
+        desktopMain.add(InformePorGrado);
+        InformePorGrado.show();
+        
+    }//GEN-LAST:event_menuEstudiantesPorGradoActionPerformed
 
-    private void btnInformeRendimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeRendimientoActionPerformed
+    private void menuAdministrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdministrarActionPerformed
         // TODO add your handling code here:
-        FrmInformeRendimiento newframe = new FrmInformeRendimiento(this.id,this.profile,this.user);
-        newframe.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnInformeRendimientoActionPerformed
+        IFrmAdministrar administrar = new IFrmAdministrar();
+        desktopMain.add(administrar);
+        administrar.show();
+//        if(profile == 1){
+//            IFrmAdministrar administrar = new IFrmAdministrar();
+//            desktopMain.add(administrar);
+//            administrar.show();
+//        }
+        
+    }//GEN-LAST:event_menuAdministrarActionPerformed
 
-    private void btnEstudiantesPorGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantesPorGradoActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        FrmEstudiantesPorGrado newframe = new FrmEstudiantesPorGrado(this.id,this.profile,this.user);
-        newframe.setVisible(true);
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnEstudiantesPorGradoActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,12 +154,12 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnEstudiantesPorGrado;
-    private javax.swing.JButton btnInformeBajoRendimiento;
-    private javax.swing.JButton btnInformeCalificaciones;
-    private javax.swing.JButton btnInformeRendimiento;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JDesktopPane desktopMain;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem menuAdministrar;
+    private javax.swing.JMenuItem menuEstudiantesPorGrado;
     // End of variables declaration//GEN-END:variables
 }

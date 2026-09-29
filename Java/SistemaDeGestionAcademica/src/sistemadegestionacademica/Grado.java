@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package InformeEstudiantesPorGrado;
+package sistemadegestionacademica;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -46,6 +46,26 @@ public class Grado {
         List<Estudiante> resultado = new ArrayList<>();
         for (Estudiante e : obtenerEstudiantes()) {
             if (e.getGradoEstudiante().equalsIgnoreCase(nombreGrado)) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+    
+    public static List<Estudiante> filtrarPorPeriodo(String asignatura,String periodo){
+        List<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : obtenerEstudiantes()) {
+            if (e.getNotas().equals(asignatura) && e.getNotas().equals(periodo)) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+    
+    public static List<Estudiante> filtrarBajoRendimiento(double limite){
+        List<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : obtenerEstudiantes()) {
+            if (!e.getNotas().isEmpty() && e.calcularPromedio() < limite) {
                 resultado.add(e);
             }
         }
