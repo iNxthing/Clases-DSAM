@@ -141,7 +141,6 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         // TODO add your handling code here:
-            // 1. LEER
         String periodo = null;
         if (rbtnPeriodo1.isSelected()) {
             periodo = "Periodo 1";
@@ -168,11 +167,9 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
         String nombre = String.valueOf(comboEstudiante.getSelectedItem());
         String asignatura = String.valueOf(comboAsignatura.getSelectedItem());
 
-        // 3. FILTRAR
         Estudiante e = Grado.buscarPorNombre(nombre);
         List<Notas> lista = e.filtrarNotas(asignatura, periodo);
 
-        // 4. MOSTRAR
         modeloTabla.setRowCount(0);
         for (Notas n : lista) {
             modeloTabla.addRow(new Object[]{
