@@ -140,7 +140,7 @@ public class IframeCalificaciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:<
         String periodo = null;
         if (rbtnPeriodo1.isSelected()) {
             periodo = "Periodo 1";
