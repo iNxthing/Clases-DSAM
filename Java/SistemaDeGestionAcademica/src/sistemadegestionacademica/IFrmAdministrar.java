@@ -248,7 +248,7 @@ public class IFrmAdministrar extends javax.swing.JInternalFrame {
         if (e == null) {
             e = Grado.crearEstudiante(nombre, grado);
         }
-
+        
         e.agregarNota(asignatura, periodo, valor);            
         JOptionPane.showMessageDialog(this, "Nota Agregada");
 

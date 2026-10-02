@@ -5,7 +5,8 @@
 package sistemadegestionacademica;
 import InformeEstudiantesPorGrado.IFrmEstudiantesPorGrado;
 import InformeCalificaciones.IframeCalificaciones;
-
+import InformeRendimientoAcademico.IFrmRendimiento;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -47,6 +48,7 @@ public class FrmMain extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuEstudiantesPorGrado = new javax.swing.JMenuItem();
         menuCalificaciones = new javax.swing.JMenuItem();
+        menuRendimiento = new javax.swing.JMenuItem();
         menuCerrarSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuAdministrar = new javax.swing.JMenuItem();
@@ -73,6 +75,10 @@ public class FrmMain extends javax.swing.JFrame {
         menuCalificaciones.setText("Calificaciones");
         menuCalificaciones.addActionListener(this::menuCalificacionesActionPerformed);
         jMenu1.add(menuCalificaciones);
+
+        menuRendimiento.setText("Rendimiento");
+        menuRendimiento.addActionListener(this::menuRendimientoActionPerformed);
+        jMenu1.add(menuRendimiento);
 
         menuCerrarSesion.setText("Cerrar Sesion");
         menuCerrarSesion.addActionListener(this::menuCerrarSesionActionPerformed);
@@ -119,11 +125,6 @@ public class FrmMain extends javax.swing.JFrame {
         IFrmAdministrar administrar = new IFrmAdministrar();
         desktopMain.add(administrar);
         administrar.show();
-//        if(profile == 1){
-//            IFrmAdministrar administrar = new IFrmAdministrar();
-//            desktopMain.add(administrar);
-//            administrar.show();
-//        }
         
     }//GEN-LAST:event_menuAdministrarActionPerformed
 
@@ -140,6 +141,14 @@ public class FrmMain extends javax.swing.JFrame {
         desktopMain.add(calificaciones);
         calificaciones.show();
     }//GEN-LAST:event_menuCalificacionesActionPerformed
+
+    private void menuRendimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRendimientoActionPerformed
+        // TODO add your handling code here:
+        IFrmRendimiento rendimiento = new IFrmRendimiento();
+        desktopMain.add(rendimiento);
+        rendimiento.show();
+        
+    }//GEN-LAST:event_menuRendimientoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,5 +184,6 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCalificaciones;
     private javax.swing.JMenuItem menuCerrarSesion;
     private javax.swing.JMenuItem menuEstudiantesPorGrado;
+    private javax.swing.JMenuItem menuRendimiento;
     // End of variables declaration//GEN-END:variables
 }
