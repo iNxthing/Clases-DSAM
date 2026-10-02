@@ -1,0 +1,14 @@
+/home/nothing/RiderProjects/Guerrero/Guerrero/bin/Debug/net10.0/Guerrero
+/home/nothing/RiderProjects/Guerrero/Guerrero/bin/Debug/net10.0/Guerrero.deps.json
+/home/nothing/RiderProjects/Guerrero/Guerrero/bin/Debug/net10.0/Guerrero.runtimeconfig.json
+/home/nothing/RiderProjects/Guerrero/Guerrero/bin/Debug/net10.0/Guerrero.dll
+/home/nothing/RiderProjects/Guerrero/Guerrero/bin/Debug/net10.0/Guerrero.pdb
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.GeneratedMSBuildEditorConfig.editorconfig
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.AssemblyInfoInputs.cache
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.AssemblyInfo.cs
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.csproj.CoreCompileInputs.cache
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.dll
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/refint/Guerrero.dll
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.pdb
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/Guerrero.genruntimeconfig.cache
+/home/nothing/RiderProjects/Guerrero/Guerrero/obj/Debug/net10.0/ref/Guerrero.dll

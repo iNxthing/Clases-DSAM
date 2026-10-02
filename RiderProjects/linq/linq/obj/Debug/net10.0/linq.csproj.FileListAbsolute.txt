@@ -1,0 +1,14 @@
+/home/nothing/RiderProjects/linq/linq/bin/Debug/net10.0/linq
+/home/nothing/RiderProjects/linq/linq/bin/Debug/net10.0/linq.deps.json
+/home/nothing/RiderProjects/linq/linq/bin/Debug/net10.0/linq.runtimeconfig.json
+/home/nothing/RiderProjects/linq/linq/bin/Debug/net10.0/linq.dll
+/home/nothing/RiderProjects/linq/linq/bin/Debug/net10.0/linq.pdb
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.GeneratedMSBuildEditorConfig.editorconfig
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.AssemblyInfoInputs.cache
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.AssemblyInfo.cs
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.csproj.CoreCompileInputs.cache
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.dll
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/refint/linq.dll
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.pdb
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/linq.genruntimeconfig.cache
+/home/nothing/RiderProjects/linq/linq/obj/Debug/net10.0/ref/linq.dll
