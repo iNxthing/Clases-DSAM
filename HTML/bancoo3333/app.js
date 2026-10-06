@@ -23,7 +23,6 @@ function show(){
 document.getElementById("slide")
 .src=images[index];
 
-
 }
 
 
