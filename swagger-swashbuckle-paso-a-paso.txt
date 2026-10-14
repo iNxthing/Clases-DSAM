@@ -1,0 +1,154 @@
+=============================================================
+SWAGGER CON SWASHBUCKLE.ASPNETCORE - PASO A PASO
+Proyecto: miprimerapi1 (.NET 10 / ASP.NET Core)
+=============================================================
+
+-------------------------------------------------------------
+1. AGREGAR EL PAQUETE
+-------------------------------------------------------------
+
+Desde la terminal, DENTRO de la carpeta del proyecto (donde
+esta el .csproj):
+
+    cd ~/RiderProjects/miprimerapi1/miprimerapi1
+    dotnet add package Swashbuckle.AspNetCore
+
+Eso agrega la linea <PackageReference> al .csproj
+automaticamente y restaura. Sin --version toma la ultima
+estable.
+
+Version especifica (si queres fijar una):
+
+    dotnet add package Swashbuckle.AspNetCore --version 10.3.0
+
+Verificar que quedo instalado:
+
+    dotnet list package
+
+EN RIDER (alternativa grafica):
+    click derecho sobre "Dependencies" ->
+    "Manage NuGet Packages" ->
+    buscar "Swashbuckle.AspNetCore" -> Install.
+    Es exactamente lo mismo.
+
+
+-------------------------------------------------------------
+2. USARLO (Program.cs)
+-------------------------------------------------------------
+
+Se necesitan DOS piezas:
+
+a) El documento OpenAPI (generador)
+
+    builder.Services.AddOpenApi();   // genera el documento
+    app.MapOpenApi();                // lo publica en /openapi/v1.json
+
+   Estas dos lineas ya vienen en el template nuevo.
+
+b) La UI visual
+
+   Dentro del bloque if (app.Environment.IsDevelopment()):
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.MapOpenApi();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/openapi/v1.json", "miprimerapi1 API");
+            options.RoutePrefix = "swagger";
+        });
+    }
+
+   - SwaggerEndpoint   = CUAL documento mostrar (apunta al que
+                         ya genera AddOpenApi, no genera otro).
+   - RoutePrefix       = DONDE vive la UI ("/swagger";
+                         con "" quedaria en la raiz).
+
+Ejemplo completo de Program.cs:
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Services.AddControllers();
+    builder.Services.AddOpenApi();
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.MapOpenApi();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/openapi/v1.json", "miprimerapi1 API");
+            options.RoutePrefix = "swagger";
+        });
+    }
+
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
+
+
+-------------------------------------------------------------
+3. CORRER Y PROBAR
+-------------------------------------------------------------
+
+    dotnet run --launch-profile http
+    -> http://localhost:5088/swagger
+
+Requisito: estar en modo Development (los perfiles de
+Properties/launchSettings.json ya lo hacen). Si no, la UI
+no aparece.
+
+Comprobacion rapida:
+
+    curl -o /dev/null -w "%{http_code}\n" http://localhost:5088/swagger/index.html
+    curl -o /dev/null -w "%{http_code}\n" http://localhost:5088/openapi/v1.json
+
+Los dos deben dar 200.
+
+
+-------------------------------------------------------------
+4. COMANDOS UTILES (cheat sheet)
+-------------------------------------------------------------
+
+    dotnet add package <Nombre>          agregar un paquete
+    dotnet remove package <Nombre>       quitar un paquete
+    dotnet list package                  listar paquetes instalados
+    dotnet restore                        restaurar (si editas el csproj a mano)
+    dotnet build                          compilar
+    dotnet clean                          limpiar bin/obj
+    dotnet run --launch-profile http     correr la API
+
+Carpetas importantes del proyecto:
+
+    Program.cs               configuracion de la app
+    Controllers/             los endpoints (rutas)
+    Properties/launchSettings.json   perfiles http/https y puertos
+    appsettings.json         configuracion general
+
+
+-------------------------------------------------------------
+5. SOLUCION DE PROBLEMAS
+-------------------------------------------------------------
+
+"No frameworks were found / Microsoft.AspNetCore.App"
+    -> Falta el runtime de ASP.NET:
+       sudo pacman -S aspnet-runtime
+
+"No .NET SDKs were found"
+    -> Falta el SDK:
+       sudo pacman -S dotnet-sdk aspnet-targeting-pack
+
+"Ya existe algo en el puerto 5088"
+    -> Hay otra instancia corriendo:
+       pkill -f miprimerapi1
+
+La UI no carga (404 en /swagger)
+    -> Estas en modo Production o no agregaste UseSwaggerUI().
+       Fijate que ASPNETCORE_ENVIRONMENT=Development.
+
+Build con warnings (CS8981 / CS8618)
+    -> No rompen. CS8981 = nombres en minusculas (usar PascalCase),
+       CS8618 = propiedad string sin inicializar
+       (agregar "required" o "?").
