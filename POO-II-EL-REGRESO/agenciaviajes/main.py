@@ -1,6 +1,4 @@
-from operator import gt
-
-from fastapi import FastAPI,HTTPException, status
+from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel,Field
 
 app = FastAPI(title="Agencia de Viajes ")
