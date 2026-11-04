@@ -116,8 +116,6 @@ class reserva(BaseModel):
     cliente_id: int = Field(gt=0)
     numero_de_personas: int =Field(gt=0) 
     paquete_id: int = Field(gt=0)
-    cancelada: bool = False
-
 
 @app.get("/reservas", tags=["Reservas"])
 def mostrar_reservas():
@@ -147,12 +145,13 @@ def agregar_reserva(datos: reserva):
     if not paquete_existe:
         raise HTTPException(status_code=404,detail="Paquete no existe")
     else:
+
         nueva_reserva = {
             "id": nuevo_id,
             "cliente_id": datos.cliente_id,
             "numero_de_personas": datos.numero_de_personas,
             "paquete": datos.paquete_id,
-            "cancelada": datos.cancelada
+            "cancelada": False
         }
 
         for paquete in paquetes_turisticos:
