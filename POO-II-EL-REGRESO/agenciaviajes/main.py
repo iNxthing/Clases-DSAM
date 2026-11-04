@@ -113,6 +113,7 @@ reservas = [
 ]
 
 class reserva(BaseModel):
+    cliente_id: int = Field(gt=0)
     numero_de_personas: int =Field(gt=0) 
     paquete_id: int = Field(gt=0)
     cancelada: bool = False
@@ -148,6 +149,7 @@ def agregar_reserva(datos: reserva):
     else:
         nueva_reserva = {
             "id": nuevo_id,
+            "cliente_id": datos.cliente_id,
             "numero_de_personas": datos.numero_de_personas,
             "paquete": datos.paquete_id,
             "cancelada": datos.cancelada
