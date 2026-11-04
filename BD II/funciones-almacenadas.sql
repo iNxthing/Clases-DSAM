@@ -191,7 +191,7 @@ end//
 
 DELIMITER ;
 
-select *,fn_calcular_edad(id_estudiante) from estudiantes
+select *,fn_calcular_edad(id_estudiante) from estudiantes;
 
 
 /* 
@@ -240,7 +240,7 @@ end//
 
 DELIMITER ;
 
-select *,fn_desempeño(valor_nota) from notas
+select *,fn_desempeño(valor_nota) from notas;
 
 
 
