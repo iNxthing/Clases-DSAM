@@ -124,10 +124,10 @@ def crear_partido(partido: partidoEntrada):
     if partido.equipo_local_id not in ids_equipos:
         raise HTTPException(status_code=404,detail="Equipo local no encontrado")
     
-    if partido.equipo_visitante_id_id not in ids_equipos:
+    if partido.equipo_visitante_id not in ids_equipos:
             raise HTTPException(status_code=404,detail="Equipo visitante no encontrado")
         
-    nuevo_id = len(partido) + 1
+    nuevo_id = len(partidos) + 1
     
     nuevo_partido = {
         "id": nuevo_id,
