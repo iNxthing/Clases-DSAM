@@ -76,7 +76,7 @@ reservas = [
 ]
 
 class reserva(BaseModel):
-    numero_personas: int =Field(gt=0) 
+    numero_de_personas: int =Field(gt=0) 
     paquete_id: int = Field(gt=0)
     cancelada: bool = False
 
@@ -95,23 +95,52 @@ def agregar_reserva(datos: reserva):
     for paquete in paquetes_turisticos:
         if paquete["id"] == datos.paquete_id:
             capacidad = paquete["capacidad_maxima"]
-            if datos.numero_personas > capacidad:
-                raise HTTPException(status_code=400,detail="El paquete seleccionado no admite esa cantidad de personas")
+            if datos.numero_de_personas > capacidad:
+                raise HTTPException(status_code=400,detail="No se pudo completar la reserva porque la cantidad de personas seleccionadas exeden el limite de capacidad del paquete")
 
     paquete_existe = any(
         paquete["id"] == datos.paquete_id
         for paquete in paquetes_turisticos
     )
     
+     
+
+
     if not paquete_existe:
         raise HTTPException(status_code=404,detail="Paquete no existe")
+    else:
+        nueva_reserva = {
+            "id": nuevo_id,
+            "numero_de_personas": datos.numero_de_personas,
+            "paquete": datos.paquete_id,
+            "cancelada": datos.cancelada
+        }
 
-    nueva_reserva = {
-        "id": nuevo_id,
-        "numero_de_personas": datos.numero_personas,
-        "paquete": datos.paquete_id,
-        "estado": datos.cancelada
-    }
-    reservas.append(nueva_reserva)
+        for paquete in paquetes_turisticos:
+            if paquete["id"] == datos.paquete_id:
+                if paquete["cupos_disponibles"] <= 0:
+                    raise HTTPException(status_code=406,detail="Este paquete no tiene cupos disponibles")
+                else:
+                    cupos = paquete["cupos_disponibles"]
+                    cupos_ocupados = cupos - datos.numero_de_personas
+                
+                    paquete["cupos_disponibles"] = cupos_ocupados
+        
+        
+        reservas.append(nueva_reserva)
     raise HTTPException(status_code=201,detail="Reserva creada")
+
+
+@app.put("/reservas",tags=["Reservas"])
+def Cancelar_reserva(id: int,cancelar: bool):
+    for reserva in reservas:
+        if reserva["id"] == id:
+            reserva["cancelada"] = cancelar
+            for paquete in paquetes_turisticos:
+                paquete["cupos_disponibles"] += reserva["numero_de_personas"]
+                reservas.remove(reserva)
+    
+    raise HTTPException(status_code=202,detail="Reserva cancelada con exito")
+
+
 
