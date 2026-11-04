@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "dgSpecHash": "FB1FrERmx0w=",
+  "success": true,
+  "projectFilePath": "/home/nothing/RiderProjects/Tienda/Tienda/Tienda.csproj",
+  "expectedPackageFiles": [
+    "/home/nothing/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.aspnetcore.openapi/10.0.11/microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.build.locator/1.7.8/microsoft.build.locator.1.7.8.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.4/microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.common/4.8.0/microsoft.codeanalysis.common.4.8.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.csharp/4.8.0/microsoft.codeanalysis.csharp.4.8.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.csharp.workspaces/4.8.0/microsoft.codeanalysis.csharp.workspaces.4.8.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.workspaces.common/4.8.0/microsoft.codeanalysis.workspaces.common.4.8.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.codeanalysis.workspaces.msbuild/4.8.0/microsoft.codeanalysis.workspaces.msbuild.4.8.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.entityframeworkcore/9.0.0/microsoft.entityframeworkcore.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.0/microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.0/microsoft.entityframeworkcore.analyzers.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.entityframeworkcore.design/9.0.0/microsoft.entityframeworkcore.design.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/microsoft.entityframeworkcore.relational.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.extensions.dependencymodel/9.0.0/microsoft.extensions.dependencymodel.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512",
+    "/home/nothing/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/mysqlconnector/2.4.0/mysqlconnector.2.4.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0/pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/scalar.aspnetcore/2.18.2/scalar.aspnetcore.2.18.2.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.codedom/6.0.0/system.codedom.6.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition/7.0.0/system.composition.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition.attributedmodel/7.0.0/system.composition.attributedmodel.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition.convention/7.0.0/system.composition.convention.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition.hosting/7.0.0/system.composition.hosting.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition.runtime/7.0.0/system.composition.runtime.7.0.0.nupkg.sha512",
+    "/home/nothing/.nuget/packages/system.composition.typedparts/7.0.0/system.composition.typedparts.7.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'MySqlConnector' 2.4.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-473q-m89c-ghf8",
+      "projectPath": "/home/nothing/RiderProjects/Tienda/Tienda/Tienda.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/nothing/RiderProjects/Tienda/Tienda/Tienda.csproj",
+      "libraryId": "MySqlConnector",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
