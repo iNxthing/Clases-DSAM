@@ -133,12 +133,21 @@ def agregar_reserva(datos: reserva):
 
 @app.put("/reservas",tags=["Reservas"])
 def Cancelar_reserva(id: int,cancelar: bool):
+
+    esta_cancelada = any(
+        reserva["cancelada"] == True
+        for reserva in reservas
+    )
+
+    if esta_cancelada:
+        raise HTTPException(status_code=400,detail="No puedes cancelar una reserva ya cancelada")
+
     for reserva in reservas:
         if reserva["id"] == id:
             reserva["cancelada"] = cancelar
             for paquete in paquetes_turisticos:
                 paquete["cupos_disponibles"] += reserva["numero_de_personas"]
-                reservas.remove(reserva)
+                
     
     raise HTTPException(status_code=202,detail="Reserva cancelada con exito")
 
