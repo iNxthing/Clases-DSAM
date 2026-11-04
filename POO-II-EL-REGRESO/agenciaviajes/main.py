@@ -1,3 +1,5 @@
+from logging import raiseExceptions
+
 from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel,Field
 
@@ -67,7 +69,42 @@ def agregar_paquete(datos: paquete_turistico):
 
 
 
+clientes = [
+    {
+        "id": 1,
+        "nombre": "Nothing"
+    },
+    {
+        "id": 2,
+        "nombre": "EpicZimbawe"
+    },
+    {
+        "id": 3,
+        "nombre": "Nautilios"
+    }
+]
 
+class cliente(BaseModel):
+    nombre: str = Field(min_length=2,max_length=50)
+
+
+@app.get("/clientes", tags=["Clientes"])
+def mostrar_clentes():
+    return clientes
+
+@app.get("/clientes/{id}",tags=["Clientes"])
+def filtrar_clientes(id: int):
+    existe = any(
+        cliente["id"] == id
+        for cliente in clientes
+    )
+
+    if not existe:
+        raise HTTPException(status_code=404,detail="El cliente no existe")
+    
+    for cliente in clientes:
+        if cliente["id"] == id:
+            return cliente
 
 
 
