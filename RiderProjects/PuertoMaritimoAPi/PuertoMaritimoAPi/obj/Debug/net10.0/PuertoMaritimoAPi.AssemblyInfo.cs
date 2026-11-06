@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PuertoMaritimoAPi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e935df103318fed384ed9c07a5ce98f4f2af5c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3015ce6b105a10d0162b25b64940177b3df0829")]
 [assembly: System.Reflection.AssemblyProductAttribute("PuertoMaritimoAPi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PuertoMaritimoAPi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
