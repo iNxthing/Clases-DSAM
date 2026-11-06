@@ -15,13 +15,17 @@ public class BuqueService
 
     public async Task<List<Buque>> obtenerTodos()
     {
-        return await _context.Buques.ToListAsync();
+        return await _context.Buques
+            .Include(b => b.Contenedores)
+            .ToListAsync();
     }
     //Consultar Por id
     
     public async Task<Buque?> obtenerPorID(int id)
     {
-        return await _context.Buques.FirstOrDefaultAsync(b => b.Id == id);
+        return await _context.Buques
+            .Include(b => b.Contenedores)
+            .FirstOrDefaultAsync(b => b.Id == id);
     }
     //Crear 
     public async Task<Buque> crear(Buque buque)

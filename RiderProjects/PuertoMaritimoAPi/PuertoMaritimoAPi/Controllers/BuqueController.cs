@@ -22,7 +22,7 @@ public class BuqueController : Controller
         return Ok(buques);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> obtenerPorID(int id)
     {
         var buque = await _buqueService.obtenerPorID(id);
@@ -42,7 +42,7 @@ public class BuqueController : Controller
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> acctualizar(int id , Buque buque)
+    public async Task<IActionResult> actualizar(int id , Buque buque)
     {
         var actualizado = await _buqueService.actualizar(id, buque);
 

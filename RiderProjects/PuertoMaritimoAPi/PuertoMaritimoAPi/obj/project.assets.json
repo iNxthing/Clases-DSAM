@@ -2115,11 +2115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/nothing/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/PuertoMaritimoAPi.csproj",
+      "projectUniqueName": "/home/nothing/Documents/Clases-DSAM/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/PuertoMaritimoAPi.csproj",
       "projectName": "PuertoMaritimoAPi",
-      "projectPath": "/home/nothing/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/PuertoMaritimoAPi.csproj",
+      "projectPath": "/home/nothing/Documents/Clases-DSAM/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/PuertoMaritimoAPi.csproj",
       "packagesPath": "/home/nothing/.nuget/packages/",
-      "outputPath": "/home/nothing/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/obj/",
+      "outputPath": "/home/nothing/Documents/Clases-DSAM/RiderProjects/PuertoMaritimoAPi/PuertoMaritimoAPi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/nothing/.nuget/NuGet/NuGet.Config"
@@ -2198,7 +2198,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.111/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.113/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

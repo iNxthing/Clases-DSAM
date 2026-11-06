@@ -9,8 +9,8 @@ public class Contenedor
     
     //Relacion con el buque
     public int BuqueID { get; set; }
-    public Buque? Buque { get; set; }
+    // public Buque? Buque { get; set; }
     //Relacion con el muelle
     public int MuelleID { get; set; }
-    public Muelle? Muelle { get; set; }
+    // public Muelle? Muelle { get; set; }
 }

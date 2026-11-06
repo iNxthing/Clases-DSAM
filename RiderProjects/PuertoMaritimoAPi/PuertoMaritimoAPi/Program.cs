@@ -19,6 +19,8 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("ConexionMySQL");
         builder.Services.AddDbContext<PuertoContext>(option => option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
         builder.Services.AddScoped<BuqueService>();
+        builder.Services.AddScoped<ContenedorService>();
+        builder.Services.AddScoped<MuelleService>();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
