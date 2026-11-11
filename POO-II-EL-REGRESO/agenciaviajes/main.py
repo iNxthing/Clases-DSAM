@@ -1,7 +1,5 @@
-from logging import raiseExceptions
-
-from fastapi import FastAPI,HTTPException
-from pydantic import BaseModel,Field
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 app = FastAPI(title="Agencia de Viajes ")
 
@@ -65,7 +63,7 @@ def agregar_paquete(datos: paquete_turistico):
 
     }
     paquetes_turisticos.append(nuevo_paquete_t)
-    raise HTTPException(status_code=201,detail=f"Paquete creado con exito")
+    raise HTTPException(status_code=201,detail="Paquete creado con exito")
 
 
 
