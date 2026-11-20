@@ -2,9 +2,9 @@ from urllib.parse import quote_plus
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-USUARIO = "root"
-CLAVE = quote_plus("72564025")      # quote_plus protege caracteres especiales
-SERVIDOR = "localhost"
+USUARIO = ""
+CLAVE = quote_plus("")      # quote_plus protege caracteres especiales
+SERVIDOR = ""
 PUERTO = 3306
 BASE_DE_DATOS = "AgenciaViajesDB"
 
