@@ -123,6 +123,51 @@ Le indicas a Pydantic: *"Cuando te pase un objeto de base de datos, no intentes 
 
 ---
 
+### 5. Mapa del Viaje de la Información (Data Flow Lifecycle)
+
+A continuación se muestra el ciclo de vida completo de los datos cuando un cliente crea un recurso (por ejemplo, un paquete):
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Cliente as Cliente (Postman / App Móvil)
+    participant FastAPI as FastAPI Router (@router.post)
+    participant PydanticIn as Pydantic (CrearPaquete)
+    participant Endpoint as Función en paquetes.py
+    participant DB as Motor MySQL
+    participant PydanticOut as Pydantic (PaqueteResponse)
+
+    Cliente->>FastAPI: 1. POST /paquetes/ con JSON {"destino": "Cancún", "precio": 500, ...} (SIN ID)
+    FastAPI->>PydanticIn: 2. Pasa el JSON para validación
+    alt Validación Fallida
+        PydanticIn-->>Cliente: Respuesta HTTP 422 Unprocessable Entity
+    else Validación Exitosa
+        PydanticIn->>Endpoint: 3. Entrega objeto validado (paquete.destino, paquete.precio)
+        Note over Endpoint: 4. Instancia models.paquete(...) -> En RAM su id es None
+        Endpoint->>DB: 5. db.add() y db.commit() -> INSERT INTO paquetes...
+        Note over DB: 6. MySQL escribe en disco y genera el id=14 (AUTO_INCREMENT)
+        Endpoint->>DB: 7. db.refresh(nuevo_paquete)
+        DB-->>Endpoint: 8. Devuelve el id=14 recién creado
+        Note over Endpoint: 9. Ahora nuevo_paquete.id vale 14
+        Endpoint->>FastAPI: 10. return nuevo_paquete
+        FastAPI->>PydanticOut: 11. Intercepta el return gracias a response_model
+        Note over PydanticOut: 12. Extrae atributos (from_attributes=True) y formatea el JSON
+        FastAPI-->>Cliente: 13. HTTP 201 Created con JSON {"id": 14, "destino": "Cancún", ...}
+    end
+```
+
+#### Tabla de Evolución del Estado de los Datos
+
+| Momento | Dónde está la información | ¿Qué contiene el campo `id`? | ¿Quién lo generó? |
+| :--- | :--- | :--- | :--- |
+| **Petición del Cliente** | En el cable de red (JSON HTTP) | **No existe** en el JSON | Nadie (el cliente no lo conoce) |
+| **Instanciación en Python** | Memoria RAM (`models.paquete(...)`) | `None` | Todavía no se ha guardado |
+| **Ejecución de `db.commit()`** | Disco duro de MySQL | **`14`** (o el siguiente autoincremental) | **El motor de MySQL** |
+| **Ejecución de `db.refresh()`** | Objeto Python en memoria | **`14`** | `refresh` lo trajo de MySQL |
+| **Filtrado `PaqueteResponse`** | Interceptor de FastAPI | **`14`** empaquetado en el JSON final | Pydantic para el cliente |
+
+---
+
 ### D. Atomicidad en Transacciones (ACID)
 Al realizar una operación como una reserva:
 1. Se consulta el paquete y se restan sus cupos disponibles.
