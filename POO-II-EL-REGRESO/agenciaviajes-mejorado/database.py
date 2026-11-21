@@ -1,7 +1,10 @@
 import os
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+
+load_dotenv()
 
 USUARIO = os.getenv("DB_USER")
 CLAVE = quote_plus(os.getenv("DB_PASSWORD", ""))      # quote_plus protege caracteres especiales
