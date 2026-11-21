@@ -1,12 +1,13 @@
+import os
 from urllib.parse import quote_plus
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-USUARIO = ""
-CLAVE = quote_plus("")      # quote_plus protege caracteres especiales
-SERVIDOR = ""
-PUERTO = 3306
-BASE_DE_DATOS = "AgenciaViajesDB"
+USUARIO = os.getenv("DB_USER")
+CLAVE = quote_plus(os.getenv("DB_PASSWORD", ""))      # quote_plus protege caracteres especiales
+SERVIDOR = os.getenv("DB_HOST")
+PUERTO = os.getenv("DB_PORT")
+BASE_DE_DATOS = os.getenv("DB_NAME")
 
 DATABASE_URL = f"mysql+pymysql://{USUARIO}:{CLAVE}@{SERVIDOR}:{PUERTO}/{BASE_DE_DATOS}"
 
